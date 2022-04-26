@@ -26,7 +26,7 @@ Route::post('profile/personal', 'ProfileController@savePersonalInfo')->name('acc
 Route::post('profile/address', 'ProfileController@saveAddressInfo')->name('account.profile.address');
 Route::post('profile/change-unverified-email', 'ProfileController@updateUnverifiedEmail')->name('account.profile.update-unverified-email');
 Route::post('profile/verify-unverified-email/{user}', 'ProfileController@verifyUnverifiedEmail')->name('account.profile.verify-unverified-email');
-
+ 
 Route::post('profile/settings', 'SettingsController@saveSettings')->name('account.settings.save');
 Route::post('profile/settings/email', 'SettingsController@changeEmail')->name('account.settings.change.email');
 Route::post('profile/settings/email/resend', 'SettingsController@resendVerification')->name('account.settings.change.email.resend');

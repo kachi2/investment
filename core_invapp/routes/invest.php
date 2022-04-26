@@ -38,6 +38,10 @@ Route::name('user.investment.')->middleware(['user'])->group(function () {
     Route::get('/investment/plan/{id}', 'User\InvestmentController@investmentDetails')->name('details');
     Route::get('/investment/history/{type?}', 'User\InvestmentController@investmentHistory')->name('history');
     Route::get('/investment/transactions/{type?}', 'User\InvestmentController@transactionList')->name('transactions');
+    
+ //copied routes 
+ Route::get('/process/profits', 'User\InvestmentController@processProfits')->name('process.profits');
+ Route::post('/process/profits/payout', 'User\InvestmentController@processPayoutProfits')->name('process.profits.payout');
 
     Route::get('/invest/{ucode?}', 'User\InvestController@showPlans')->name('invest');
     Route::post('/invest/preview', 'User\InvestController@previewInvest')->name('invest.preview');

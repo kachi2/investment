@@ -91,7 +91,7 @@ class InvestedPlansController extends Controller
         }]);
 
         return view("investment.admin.invest.details", compact("invest"));
-    }
+    } 
 
     public function processSyncPlans(Request $request)
     {

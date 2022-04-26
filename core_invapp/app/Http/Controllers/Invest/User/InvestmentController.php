@@ -86,7 +86,7 @@ class InvestmentController extends Controller
 
         return view("investment.user.dashboard", compact('investments', 'recents', 'amounts', 'profitChart', 'investChart'));
     }
-
+ 
 
     public function planList(Request $request)
     {
@@ -319,4 +319,65 @@ class InvestmentController extends Controller
 
         return true;
     }
+
+    #=================== function to process user's payouts ===============
+    public function processProfits()
+    {
+        if (is_locked('profit')) {
+            throw ValidationException::withMessages(['invalid' => __("Sorry, one of your system administrator is working, please try again after few minutes.")]);
+        }
+      // $payout = IvProfit::where(['user_id' => auth()->user()->id, 'payout' => null]);
+      $payout = IvProfit::whereNull('payout');
+        $amount = $payout->sum('amount');
+        $total = $payout->count();
+       
+        if ($total <= 0) { 
+            throw ValidationException::withMessages(['invalid' => ['title' => __('No pending profits!'), 'msg' => __('There is no pending profits to process.')]]);
+        }
+       // dd($payout);
+        $getProfits = $payout->orderBy('id', 'asc')->get()->groupBy('user_id');
+        $userByProfits =  $getProfits->map(function ($items, $key) {
+            return $items->keyBy('id')->keys()->toArray();
+        })->toArray();
+        foreach ($userByProfits as $user => $profits) {
+            $accounts[] = $profits;
+        }
+      // dd($accounts);
+        return view('investment.user.misc.modal-process-profits', ['amount' => $amount, 'total' => $total, 'payouts' => $accounts]);
+    }
+
+    public function processPayoutProfits(Request $request)
+    {
+        if (empty($request->get('done')) && is_locked('profit')) {
+            throw ValidationException::withMessages(['invalid' => __("Sorry, one of your system administrator is working, please try again after few minutes.")]);
+        }
+        $request->validate([
+            'action' => 'nullable',
+            'done' => 'nullable',
+            'total' => 'nullable',
+            'idx' => 'nullable',
+        ]);
+        $payouts = $request->payouts;
+        $idx = (int) $request->get('idx', 0);
+
+        $user_id = auth()->user()->id;
+        //dd($payouts);
+        if (!empty($payouts) && is_array($payouts)) {
+                $this->wrapInTransaction(function ($payouts, $user_id) {
+                    $this->investment->proceedPayout($user_id, $payouts);
+                }, $payouts, $user_id);  
+        }  
+            $invests = IvInvest::where('status', InvestmentStatus::ACTIVE)->get();
+            if (!blank($invests)) {
+                foreach ($invests as $invest) {
+                    $this->wrapInTransaction(function ($invest) {
+                        $this->investment->processCompleteInvestment($invest);
+                    }, $invest);
+                }
+            }
+
+            upss('payout_locked_profit', null);
+            throw ValidationException::withMessages(['success' => ['title' => __('Profits processed successfully.')]]);
+    }
 }
+

@@ -73,7 +73,7 @@ class LedgerProfitsController extends Controller
             'type' => $type ?? 'all'
         ]);
     }
-
+ 
     public function processProfits()
     {
         if (is_locked('profit')) {

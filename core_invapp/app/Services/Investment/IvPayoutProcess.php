@@ -51,7 +51,6 @@ class IvPayoutProcess
     public function payProfits()
     {
         $batch = time();
-
         if ($this->hasThreshold()) {
             $threshold = $this->payoutThreshold();
             $profits = IvProfit::findMany($this->profits);
@@ -100,13 +99,10 @@ class IvPayoutProcess
             'source' => AccType('invest'),
             'created_at' => Carbon::now(),
         ];
-
         $ledger = new IvLedger();
         $ledger->fill($data);
         $ledger->save();
-
         $this->updateBalance($ledger->amount);
-
         return $ledger;
     }
 
@@ -164,7 +160,6 @@ class IvPayoutProcess
 
             $invest->status = InvestmentStatus::COMPLETED;
             $invest->save();
-
             $data = [
                 'action' => ActionType::STATUS_COMPLETE,
                 'action_at' => Carbon::now(),

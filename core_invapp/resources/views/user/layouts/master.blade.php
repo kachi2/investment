@@ -24,7 +24,6 @@
 <body class="nk-body npc-cryptlite has-sidebar has-sidebar-fat">
 <div class="nk-app-root">
     <div class="nk-main">
-
         @include('user.layouts.sidebar')
 
         <div class="nk-wrap">
@@ -58,8 +57,6 @@
     const updateSetting = "{{ route('update.setting') }}", getTnxDetails = "{{ route('transaction.details') }}";
 </script>
 @stack('scripts')
-<script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="c671e9c3-983b-4b08-b993-c67a3c33abc0";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
-
 @if(sys_settings('footer_code'))
     {{ html_string(sys_settings('footer_code')) }}
 @endif

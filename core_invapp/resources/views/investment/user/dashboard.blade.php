@@ -30,6 +30,11 @@
                                 {{ __("Investment Account") }} 
                                 <em class="icon ni ni-info fs-13px text-soft nk-tooltip" title="{{ __("The available balance in your investment account.") }}"></em>
                             </div>
+
+                            <div class="nk-wgacc-title text-base">
+                                {{ __("Invest Message") }} 
+                                <em class="icon ni ni-info fs-13px text-soft nk-tooltip" title="{{ __("All profits successfully approved and release the locked amount from user account..") }}"></em>
+                            </div>
                             <div class="nk-wgacc-group flex-lg-nowrap gx-4">
                                 <div class="nk-wgacc-sub">
                                     <div class="nk-wgacc-amount">
@@ -49,7 +54,9 @@
                         <div class="card-action">
                             <ul class="nk-block-tools gx-4">
                                 <li><a href="{{ route('user.investment.payout') }}" class="btn btn-secondary iv-payout"><span>{{ __('Transfer Funds') }}</span> <em class="icon ni ni-arrow-long-right"></em></a></li>
-                            </ul>
+                                <li><a href="{{ route('user.investment.process.profits') }}" class="btn btn-secondary iv-payout"><span>{{ __('Process Payout') }}</span> <em class="icon ni ni-arrow-long-right"></em></a></li>
+        
+                             </ul>
                         </div>
                     </div>
                 </div>
@@ -158,14 +165,15 @@
     </div>
     @endif
 </div>
+
 @endsection
 
 @push('modal')
 <div class="modal fade" tabindex="-1" role="dialog" id="ajax-modal"></div>
 @endpush
 
-@push('scripts')
 
+@push('scripts')
     <script>
 
         var investment=JSON.parse('{!! json_encode($investChart) !!}');
@@ -194,5 +202,6 @@
         }]
     };
     </script>
+
 
 @endpush

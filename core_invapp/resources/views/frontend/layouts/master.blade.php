@@ -144,7 +144,6 @@ use App\Enums\UserRoles;
 <script src="{{ asset('/assets/js/main_script.js') }}"></script>
 <script src="{{ asset('/assets/js/plugin.js') }}"></script>
 @stack('scripts')
-<script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="c671e9c3-983b-4b08-b993-c67a3c33abc0";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
 
 @if(sys_settings('footer_code'))
     {{ html_string(sys_settings('footer_code')) }}

@@ -10,12 +10,13 @@ use App\Http\Controllers\Controller;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
-
+ 
 class TransactionConfirmationController extends Controller
 {
     public function depositComplete(Request $request)
     {
         $depositDetails = $request->session()->get('deposit_details');
+       // dd($depositDetails);
         if (!blank($depositDetails)) {
             if (data_get($depositDetails, 'flush') == true) {
                 $request->session()->forget('deposit_details');
@@ -23,6 +24,7 @@ class TransactionConfirmationController extends Controller
                 $request->session()->push('deposit_details.flush', true);
             }
 
+           
             return view('CryptoWallet::payment-address', $depositDetails);
         } else {
             return redirect()->route('dashboard');

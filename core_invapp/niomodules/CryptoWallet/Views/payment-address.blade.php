@@ -6,13 +6,13 @@
             <div class="nk-pps-apps">
                 <div class="nk-pps-title text-center">
                     <h3 class="title">{{ __('Make Your Payment') }}</h3>
-                    <p class="caption-text">{!! __('Your order :orderid has been placed successfully. To complete, please send the exact amount of :amount to the address below.', ['orderid' => '<strong class="text-dark">'.the_tnx(data_get($tranx, 'tnx')).'</strong>', 'amount' => '<strong class="text-dark">'.money($amount, 'USD').'</strong>']) !!}</p>
+                    <p class="caption-text">{!! __('Your order :orderid has been placed successfully. To complete, please send the exact amount of :amount to the address below.', ['orderid' => '<strong class="text-dark">'.the_tnx(data_get($tranx, 'tnx')).'</strong>', 'amount' => '<strong class="text-dark">'.money($amount, $currency).'</strong>']) !!}</p>
                 </div>
                 <div class="nk-pps-card card card-bordered popup-inside">
                     <div class="card-inner-group">
                         <div class="card-inner card-inner-sm">
                             <div class="card-head mb-0">
-                                <h6 class="title mb-0{{ (data_get($payment, 'meta.timeout')) ? '' : ' text-center' }}">{{ __('Pay :wallet', ['wallet' => $currency_name]) }}</h6>
+                                <h6 class="title mb-0{{ (data_get($payment, 'meta.timeout')) ? '' : ' text-center' }}">{{ __('Pay :wallet', ['wallet' => $currency]) }}</h6>
                                 @if(data_get($payment, 'meta.timeout'))
                                     <div class="card-opt"><span class="counter" data-countdown-second="{{ ((data_get($payment, 'meta.timeout') * 60) - 1) }}" data-countdown-text="{{ __('Expire in') }}">-</span></div>
                                 @endif
@@ -24,7 +24,7 @@
                             </div>
                             <div class="pay-info text-center">
                                 <h5 class="title text-dark mb-0 clipboard-init" data-clipboard-text="{{ amount($amount, $currency, ['zero' => true]) }}">
-                                    {{ money($amount, 'USD') }} <em class="click-to-copy icon ni ni-copy-fill nk-tooltip" title="{{ __('Click to Copy') }}"></em>
+                                    {{ money($amount, $currency) }} <em class="click-to-copy icon ni ni-copy-fill nk-tooltip" title="{{ __('Click to Copy') }}"></em>
                                 </h5>
                                
                             </div>
@@ -35,7 +35,7 @@
                                     <div class="form-clip clipboard-init nk-tooltip" data-clipboard-target="#wallet-address" title="{{ __('Copy') }}">
                                         <em class="click-to-copy icon ni ni-copy"></em>
                                     </div>
-                                    <div class="form-icon"><em class="icon ni ni-sign-btc-alt"></em></div>
+                                    <div class="form-icon"><em class="icon ni ni-sign-{{strtolower($currency)}}-alt"></em></div>
                                     <input readonly type="text" class="form-control form-control-lg" id="wallet-address" value="{{ data_get($payment, 'address') }}">
                                 </div>
                                 @if(data_get($payment, 'meta.limit') || data_get($payment, 'meta.price'))

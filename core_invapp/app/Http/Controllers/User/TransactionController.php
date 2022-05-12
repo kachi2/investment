@@ -439,7 +439,7 @@ class TransactionController extends Controller
             'currency2' => $coins,
             'currency_name' => get_currency($currency, 'name'),
             'amount2' => $amount2,
-            'amount' => $amount,
+            'amount' => $amount2,
             'amount_fees' => $amount_fee,
             'fees' => $fee_data,
             'total' => $this->toSum($amount, $amount_fee),

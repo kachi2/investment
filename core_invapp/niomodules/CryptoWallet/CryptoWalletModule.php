@@ -69,7 +69,6 @@ class CryptoWalletModule implements Payable
         $currency = data_get($transaction, 'tnx_currency');
         $currencyName = get_currency($currency, 'name');
         $amount = data_get($transaction, 'tnx_total');
-
         $contextQR = str_replace(" ", "-", strtolower($currencyName)) . ":" . data_get($transaction, 'pay_to') . "?amount=" . amount($amount, $currency, ['dp' => 'calc', 'zero' => true]);
 
         $depositDetails = [

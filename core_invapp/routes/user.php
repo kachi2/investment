@@ -35,7 +35,7 @@ Route::post('profile/settings/password', 'SettingsController@changePassword')->n
 Route::post('profile/settings/2fa/{state}', 'SettingsController@google2fa')->name('account.settings.2fa');
 Route::post('update/setting', 'SettingsController@updateUserSettings')->name('update.setting');
 
-Route::get('deposit', 'TransactionController@depositPaymentMethod')->name('deposit');
+Route::get('deposit', 'TransactionController@depositPaymentMethod')->name('deposit'); 
 Route::get('deposit/online/{status}/{tnx?}', 'TransactionController@onlineDepositComplete')->name('deposit.complete.online');
 Route::get('deposit/{status}/{tnx?}', 'TransactionController@depositComplete')->name('deposit.complete');
 Route::post('deposit/amount', 'TransactionController@depositAmount')->name('deposit.amount.form');

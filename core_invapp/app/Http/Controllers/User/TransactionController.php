@@ -298,6 +298,8 @@ class TransactionController extends Controller
                 return filled($item->is_active);
             })->keyBy('slug');
 
+          //  dd($activeMethods);
+
         $errors = $this->validateDepositDefault($activeMethods);
 
         return view('user.transaction.deposit-method', compact('activeMethods', 'errors'));
@@ -350,9 +352,39 @@ class TransactionController extends Controller
 
         $base_cur = $this->basecur;
         $currency = strtoupper($request->get('deposit_currency'));
+        $coins = $currency;
+        $fee = 2.0;
+        //dd($coins);
+        switch ($coins){
+            case "BTC":
+            $coins = "bitcoin";
+            break;
+            case "ETH":
+            $coins = "ethereum";
+            break;
+            case "LTC":
+            $coins = "litecoin";
+            break;   
+            case "USDT":
+            $coins = "tether";
+            break;
+        }
         $amount = (float)$request->get('deposit_amount');
         $pm = $this->pmDetails($request->session()->get('deposit_payment_method'));
         $currencies = $request->session()->get('deposit_currencies');
+        $cURLConnection = curl_init();
+        curl_setopt($cURLConnection, CURLOPT_URL, 'https://api.coingecko.com/api/v3/simple/price?ids='.$coins.'&vs_currencies=usd');
+        curl_setopt($cURLConnection, CURLOPT_HTTPHEADER, array(
+            "Content-Type: application/json",
+        ));
+        curl_setopt($cURLConnection, CURLOPT_RETURNTRANSFER, true); 
+        $se = curl_exec($cURLConnection);
+        curl_close($cURLConnection);  
+        $resp = json_decode($se, true);
+        $amount2 = ($amount + $fee) / $resp[$coins]['usd'];
+       // dd($resp);
+        //dd(round($amount2,4));
+
         $currencies = (!blank($pm)) ? array_intersect($currencies, $pm->currencies) : $currencies;
         $rates = (!blank($pm)) ? $this->getCurrenciesData($pm) : array();
 
@@ -398,12 +430,15 @@ class TransactionController extends Controller
         $equal_amount = is_object($equal_amount) ? (string)$equal_amount : $equal_amount;
         $base_amount = round(($amount / $exchange), $this->rounded->$type_base);
         $base_fee = round(($amount_fee / $exchange), $this->rounded->$type_base);
+    
 
         $payment = [
             'method' => $pm->slug,
             'method_name' => $pm->title,
             'currency' => $currency,
+            'currency2' => $coins,
             'currency_name' => get_currency($currency, 'name'),
+            'amount2' => $amount2,
             'amount' => $amount,
             'amount_fees' => $amount_fee,
             'fees' => $fee_data,
@@ -423,7 +458,7 @@ class TransactionController extends Controller
 
         $request->session()->put('deposit_details', $payment);
 
-        return view('user.transaction.deposit-preview', compact('amount', 'currency', 'payment', 'pm'));
+        return view('user.transaction.deposit-preview', compact('amount', 'currency', 'coins', 'amount2','payment', 'pm'));
     }
 
     /**

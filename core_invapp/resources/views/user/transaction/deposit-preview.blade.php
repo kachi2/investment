@@ -30,7 +30,7 @@
                 <div class="data"><span class="amount">{{ money(data_get($payment, 'amount'), 'USD', ['dp' => 'calc']) }}</span></div>
                 @else
                 <div class="label lead-text">{{ (data_get($pm, 'module_config.is_online')) ? __('Amount to deposit') : __('You will send') }}</div>
-                <div class="data"><span class="amount">{{ money(data_get($payment, 'total'), 'USD', ['dp' => 'calc']) }}</span></div>
+                <div class="data"><span class="amount">{{ money($amount2, $coins, ['dp' => 'calc']) }}</span></div>
                 @endif
             </li>
           <!-- <li class="nk-olist-item small{{ (data_get($payment, 'equal_currency') != base_currency() && data_get($payment, 'equal_currency') != $currency) ? ' is-grouped' : '' }}">
@@ -63,7 +63,7 @@
         <ul class="nk-olist">
             <li class="nk-olist-item nk-olist-item-final">
                 <div class="label lead-text">{{ (data_get($pm, 'module_config.is_online')) ? __('Amount to credit') : __('Amount to deposit') }}</div>
-                <div class="data"><span class="amount">{{ money(data_get($payment, 'base_amount'), data_get($payment, 'base_currency'), ['dp' => 'calc']) }}</span></div>
+                <div class="data"><span class="amount">{{ money($amount2, $coins, ['dp' => 'calc']) }}</span></div>
             </li>
         </ul>
 

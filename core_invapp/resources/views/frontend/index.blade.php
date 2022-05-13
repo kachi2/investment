@@ -5,6 +5,44 @@
 @section('keyword', gss('seo_keyword_home', gss('seo_keyword', '')))
 
 @section('content')
+<section id="main-content" class="">
+<div id="demos">
+    <h2 style="display:none;">heading</h2>
+    <div id="carouselTicker" class="carouselTicker">
+       <ul class="carouselTicker__list">
+       @if(count($coins) > 0)
+       @foreach ($coins as $coin)
+          <li class="carouselTicker__item">
+             <div class="coin_info">
+                <div class="inner">
+                   <div class="coin_name">
+                      {{$coin['name']}}
+                      @if($coin['market_cap_change_percentage_24h'] > 0)
+                      <span class="update_change_plus" style="color:lightgreen">{{$coin['market_cap_change_percentage_24h']}}</span>
+                      @else
+                      <span class="update_change_minus">{{$coin['market_cap_change_percentage_24h']}}</span>
+                      @endif
+                   </div>
+                   <div class="coin_price">
+                     ${{number_format($coin['current_price'],2)}}
+                     @if($coin['price_change_24h'] > 0) 
+                     <span class="scsl__change_plus" style="color:lightgreen">{{round($coin['price_change_24h'],2)}}%</span>
+                     @else
+                     <span class="scsl__change_minus">{{round($coin['price_change_24h'],2)}}%</span>
+                     @endif
+                   </div>
+                   <div class="coin_time">
+                      ${{number_format($coin['market_cap'])}}
+                   </div>
+                </div>
+             </div>
+          </li>  
+       @endforeach
+       @endif
+       </ul>
+    </div>
+ </div>
+</section>
 <section id="slider" style="height: 700px;" class="section slider-area">
     <div class="container text-center">
 
@@ -20,6 +58,8 @@
 
     </div>
 </section>
+
+
 
 <!-- About area starts -->
 <section id="about" class="about-area section-big">
@@ -437,3 +477,9 @@
 @endif
 
 @endsection
+
+@push('scripts')
+    <script>
+
+    </script>
+@endpush

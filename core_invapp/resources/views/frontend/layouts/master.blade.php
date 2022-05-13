@@ -10,6 +10,7 @@
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
     <link rel="stylesheet" href="{{ asset('/assets/css/apps.css?ver=1.0.0') }}">
     <link rel="stylesheet" href="{{ asset('/assets/css/front.css') }}">
+    <link rel="stylesheet" href="{{ asset('/assets/slider/carouselTicker.css') }}">
 @if(sys_settings('ui_theme_skin', 'default')!='default')
     <link rel="stylesheet" href="{{ asset('assets/css/skins/theme-'.sys_settings('ui_theme_skin').'.css?ver=1.0.0') }}">
 @endif
@@ -143,6 +144,9 @@ use App\Enums\UserRoles;
 <script src="{{ asset('/assets/js/app.js') }}"></script>
 <script src="{{ asset('/assets/js/main_script.js') }}"></script>
 <script src="{{ asset('/assets/js/plugin.js') }}"></script>
+<script src="{{ asset('/assets/slider/jquery.min.js') }}"></script>
+<script src="{{ asset('/assets/slider/custom.js') }}"></script>
+
 @stack('scripts')
 
 @if(sys_settings('footer_code'))

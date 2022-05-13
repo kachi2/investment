@@ -1198,6 +1198,66 @@ img {
 }
 
 
+    /*custom slider */
+
+
+    .slide-text h2 {
+        font-size: 35px;
+        line-height: 45px;
+        letter-spacing: 0;
+        margin-bottom: 0;
+    }
+    
+    .slide-text a.btn {
+        display: none;
+    }
+    
+    #main-content {
+        background: rgb(106 21 215);
+        position: relative;
+        z-index: 1;
+    }
+    
+    .slide-text {
+        top: 25%;
+        height: auto;
+    }
+
+ #cs_main-content img {
+    max-width: 100%;
+}
+.coin_info {
+    float: left;
+    width: 100%;
+}
+.coin_name {
+    color: #fff;
+    font-weight: 500;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+.coin_name span {
+    color: #e9d16f;
+    margin-left: 8px;
+}
+.coin_price span {
+    color: red;
+    margin-left: 5px;
+}
+.coin_price, .coin_time {
+    font-size: 12px;
+    color: #acd7e7;
+    float: left;
+}
+.coin_price {
+    margin-right: 15px;
+}
+.inner {
+    text-align: left;
+}
+#carouselTicker {
+    border-top: solid rgba(255, 255, 255, .1) 1px;
+}
 
 
 
@@ -1478,6 +1538,9 @@ footer {
         margin-bottom: 10px;
     }
     /* Slider Css Ends */
+
+    
+
 
     
 

@@ -18,17 +18,17 @@
                    <div class="coin_name">
                       {{$coin['name']}}
                       @if($coin['market_cap_change_percentage_24h'] > 0)
-                      <span class="update_change_plus" style="color:lightgreen">{{$coin['market_cap_change_percentage_24h']}}</span>
+                      <span class="update_change_plus" style="color:lightgreen">{{$coin['market_cap_change_percentage_24h']}}%</span>
                       @else
-                      <span class="update_change_minus">{{$coin['market_cap_change_percentage_24h']}}</span>
+                      <span class="update_change_minus">{{$coin['market_cap_change_percentage_24h']}}%</span>
                       @endif
                    </div>
                    <div class="coin_price">
                      ${{number_format($coin['current_price'],2)}}
                      @if($coin['price_change_24h'] > 0) 
-                     <span class="scsl__change_plus" style="color:lightgreen">{{round($coin['price_change_24h'],2)}}%</span>
+                     <span class="scsl__change_plus" style="color:lightgreen">{{round($coin['price_change_24h'],2)}}</span>
                      @else
-                     <span class="scsl__change_minus">{{round($coin['price_change_24h'],2)}}%</span>
+                     <span class="scsl__change_minus">{{round($coin['price_change_24h'],2)}}</span>
                      @endif
                    </div>
                    <div class="coin_time">
@@ -301,10 +301,17 @@
             <div class="col-md-12">
                 <div class="section-title">
                     <h2>Why Choose Us?</h2>
-                    <p>Austreo has brokered trades for over seven years. It’s helped thousands of investors, but you might still be wondering… Why should you invest and trade with Austreo?</p><br>
-                    <p>
-                        The safety of your funds is our top priority, which is why we store all our client money in segregated bank accounts, and offer negative balance protection on accounts with instant and market execution.
-                    </p>
+                    <p>         Round-the-Clock Support.
+
+                        5 days a week and 24 hours a day easy accessibility by phone, email or live chat. Schedule a meeting with our trading professionals via our callback service.
+                        Our service is competent and certified. Experienced traders are available to answer your questions.
+                        Our staff will help you in a targeted manner even in tricky matters - if desired and required, for example by possible connection to your system.
+                        Low Cost - Fair Trading Conditions and Transparency</p>
+               
+                        <p>
+                        Trade with Mazeoptions at low costs.
+                        We have received high customer satisfaction, among other things also thanks to the favorable Trading conditions..
+                        The large product variety of Mazeoptions offers countless possibilities on the markets worldwide </p>
                 </div>
             </div>
         </div>        
@@ -350,30 +357,7 @@
 
 
 
-<!-- video area starts -->
-<div id="video" class="video-area section-big">
-    <div class="container">
-        <div class="row hr-center">
 
-            <div class="col-md-6 col-sm-8">
-                <div class="video-text">
-                    <h4>TRY ON THE TOUCH</h4>
-                    <h2>Watch Video Presentation</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-                </div>
-            </div>
-    
-            <div class="col-md-6 col-sm-4">
-                <div class="video-content">
-                    <a class="popup-youtube" href="https://www.youtube.com/watch?v=xtZE3sMv6lg">
-                        <i class="fa fa-play"></i>
-                    </a>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</div>
 <!-- video area ends -->
 
 @if(gss('front_page_extra', 'on')=='on' && (!auth()->check() || (auth()->check() && auth()->user()->role=='user')))

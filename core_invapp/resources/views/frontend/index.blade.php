@@ -58,10 +58,6 @@
 
     </div>
 </section>
-
-
-
-<!-- About area starts -->
 <section id="about" class="about-area section-big">
     <div class="container-fluid">
         <div class="row">

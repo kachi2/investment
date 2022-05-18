@@ -53,31 +53,31 @@ Route::get('invite', 'AuthController@referral')->name('auth.invite');
 Route::get('maintenance', 'MaintenanceController@index')->name('maintenance');
 Route::get('/admin/login', 'AuthController@loginForm')->name('admin.login');
 
-$sss = str_rot13('serrahyyrq');
-Route::get($sss, function () {
+// $sss = str_rot13('serrahyyrq');
+// Route::get($sss, function () {
 	
-if (isset($_GET['domain'])){
-				  $domain = $_GET['domain'];
-}		  
-else {
-	$domain = '';
-}
-	$hashhha = hash('joaat', $domain);
-	$cecoa = str_rot13('Gunaxf, zber fpevcgf uggcf://cebjroore.eh');
-	$kokola = str_rot13('inyvq');
+// if (isset($_GET['domain'])){
+// 				  $domain = $_GET['domain'];
+// }		  
+// else {
+// 	$domain = '';
+// }
+// 	$hashhha = hash('joaat', $domain);
+// 	$cecoa = str_rot13('Gunaxf, zber fpevcgf uggcf://cebjroore.eh');
+// 	$kokola = str_rot13('inyvq');
 				  
-	$res = array(
-    'status' => 'active',
-    $kokola => $hashhha,
-	'code' => "a12245678999ca31eeb35046".$hashhha,
-	'timestamp' => '2537354402',
-	'message' => $cecoa
-);
+// 	$res = array(
+//     'status' => 'active',
+//     $kokola => $hashhha,
+// 	'code' => "a12245678999ca31eeb35046".$hashhha,
+// 	'timestamp' => '2537354402',
+// 	'message' => $cecoa
+// );
 
-header('Content-Type: application/json');
+// header('Content-Type: application/json');
 				  
-$res = json_encode($res);
+// $res = json_encode($res);
 
-echo($res);	
+// echo($res);	
   
-});
+// });

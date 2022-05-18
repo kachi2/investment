@@ -23,7 +23,6 @@ class RedirectIfAuthenticated
                 return redirect(route('admin.dashboard'));
             }
             if (Auth::user()->role === UserRoles::USER) {
-                dd(UserRoles::USER);
                 return redirect(route('dashboard'));
             }
         }

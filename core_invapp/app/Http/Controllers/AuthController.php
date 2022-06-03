@@ -369,7 +369,7 @@ class  AuthController extends Controller
         try {
             $this->auth->generateNewToken($user);
            $cc =  ProcessEmail::dispatch('users-confirm-email', $user);
-           dd($cc);
+         //  dd($cc);
             session()->flash('mail_sent_success', __('We have emailed you a confirmation link to your email. Please check your inbox and confirm.'));
         }catch (\Exception $e){
             save_mailer_log($e, 'users-confirm-email');

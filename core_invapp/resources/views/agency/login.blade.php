@@ -30,6 +30,7 @@
                                                 <div class="input-group">                                                                                         
                                                     <input type="email" class="form-control {{ form_invalid('email') }}" value="{{old('email')}}" name="email" id="useremail" placeholder="Enter Email">
                                                     @showError('email')
+                                                    
                                                 </div>                                    
                                             </div><!--end form-group-->
                                             <div class="form-group mb-2">

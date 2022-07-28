@@ -18,7 +18,7 @@ class RouteServiceProvider extends ServiceProvider
     protected $adminNamespace = 'App\Http\Controllers\Admin';
     protected $userNamespace = 'App\Http\Controllers\User';
     protected $investNamespace = 'App\Http\Controllers\Invest';
-
+    protected $agentNamespace = 'App\Http\Controllers\Agency';
     
 
     /**
@@ -57,6 +57,8 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapApiRoutes();
 
         $this->mapWebRoutes();
+        $this->mapAgentRoutes();
+     
     
     }
 
@@ -118,6 +120,16 @@ class RouteServiceProvider extends ServiceProvider
             ->namespace($this->investNamespace)
             ->group(base_path('routes/invest.php'));
     }
+
+    protected function mapAgentRoutes()
+    {
+       
+        Route::middleware(['web', 'agent'])
+            ->prefix('agents')
+            ->namespace($this->agentNamespace)
+            ->group(base_path('routes/agent.php'));
+    }
+
 
     /**
      * Define the "api" routes for the application.

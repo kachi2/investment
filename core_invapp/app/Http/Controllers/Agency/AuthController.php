@@ -115,6 +115,7 @@ class AuthController extends Controller
     }
     $credentials = $req->only('email', 'password');
 
+  
     if(Auth::guard('agent')->attempt($credentials)){
         agent_user()->update([
             'last_login' => Carbon::now()->toDateTimeString(),
@@ -128,7 +129,7 @@ class AuthController extends Controller
             'login_ip' => $req->Ip(),
         ]);
         //dd(auth::guard('agent'));
-   //  dd(auth('agent')->user()->id);
+   //dd(auth('agent')->user()->id);
         return redirect()->route('agency.index');
     }else{
         return redirect()->back()->withInput($req->all())->withErrors($valid);

@@ -43,9 +43,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with('agent_activity', $activity);
             }
             });
-        if(is_force_https()){
-            URL::forceScheme('https');
-        }
+        
 
         Schema::defaultStringLength(191);
 

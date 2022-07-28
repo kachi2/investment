@@ -88,7 +88,6 @@ class IvProfitCalculator
         $profit = new IvProfit();
         $profit->fill($data);
         $profit->save();
-
         $invest = IvInvest::find($this->invest->id);
         $invest->received = to_sum($invest->received, $termAmount);
         $invest->term_count = $termNo;

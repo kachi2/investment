@@ -10,7 +10,7 @@ use App\Enums\InvestmentStatus;
 use App\Enums\TransactionType;
 use App\Enums\UserRoles;
 use App\Enums\UserStatus;
-
+use Illuminate\Support\MessageBag;
 use App\Models\User;
 use App\Models\Page;
 use App\Models\Account;
@@ -69,6 +69,23 @@ if (!function_exists('is_json')) {
 }
 
 
+if (!function_exists('form_invalid')) {
+    /**
+     * @param $field
+     * @return string
+     */
+    function form_invalid($field)
+    {
+        static $errors;
+        if (!$errors) {
+            $errors = session()->get('errors', new MessageBag());
+        }
+
+        return $errors->has($field) ? 'is-invalid' : '';
+    }
+}
+
+
 if (!function_exists('is_force_https')) {
     /**
      * Check if force to https form configure.
@@ -83,6 +100,27 @@ if (!function_exists('is_force_https')) {
 
         return false;
     }
+}
+
+if (!function_exists('generate_reference')) {
+    /**
+     * @return string
+     */
+    function generate_reference()
+    {
+        return substr(md5(uniqid(time())), 0, 10);
+    }
+}
+
+if(!function_exists('agent_user')){
+
+    /**
+     * @return Athenticatable|Agent
+     */
+
+     function agent_user(){
+        return auth('agent')->user();
+     }
 }
 
 if (!function_exists('random_hash')) {

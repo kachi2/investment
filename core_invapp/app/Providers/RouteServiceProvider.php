@@ -19,6 +19,8 @@ class RouteServiceProvider extends ServiceProvider
     protected $userNamespace = 'App\Http\Controllers\User';
     protected $investNamespace = 'App\Http\Controllers\Invest';
 
+    
+
     /**
      * The path to the "home" route for your application.
      *
@@ -55,6 +57,7 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapApiRoutes();
 
         $this->mapWebRoutes();
+    
     }
 
     /**
@@ -100,6 +103,7 @@ class RouteServiceProvider extends ServiceProvider
             ->namespace($this->adminNamespace)
             ->group(base_path('routes/admin.php'));
     }
+
 
     /**
      * Define the "invest" routes for the application.

@@ -68,7 +68,7 @@
                                                     <select name="type" class="form-select form-select-sm">
                                                         <option value="any">{{ __("Any Type") }}</option>
                                                         @foreach($ledgers as $type)
-                                                            <option{{ (request()->get('type') == $type) ? ' selected' : '' }} value="{{ $type }}">
+                                                            <option {{ (request()->get('type') == $type) ? ' selected' : '' }} value="{{ $type }}">
                                                             {{ ucfirst(__($type)) }}
                                                             </option>
                                                         @endforeach
@@ -82,7 +82,7 @@
                                                     <select name="source" class="form-select form-select-sm">
                                                         <option value="any">{{ __("Any Source") }}</option>
                                                         @foreach($sources as $source)
-                                                            <option{{ (request()->get('source') == $source) ? ' selected' : '' }} value="{{ $source }}">
+                                                            <option {{ (request()->get('source') == $source) ? ' selected' : '' }} value="{{ $source }}">
                                                             {{ w2n($source) }}
                                                             </option>
                                                         @endforeach

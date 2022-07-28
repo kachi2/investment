@@ -4,6 +4,8 @@ namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Auth\AuthenticationException;
+use Illuminate\Support\Arr;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -41,6 +43,7 @@ class Handler extends ExceptionHandler
             'code' => 422
         ], $exception->status);
     }
+   
 
     /**
      * Report or log an exception.
@@ -72,4 +75,21 @@ class Handler extends ExceptionHandler
 
         return parent::render($request, $exception);
     }
+
+
+    protected function unauthenticated($request, AuthenticationException $exception)
+    {
+        $gaurd = Arr::get($exception->guards(), 0);
+        switch($gaurd){
+            case 'agents': 
+                $login = 'Agent-login';
+                break;
+            default: 
+            $login = "auth.login.form";
+            break;
+        }
+        return redirect()->guest(route($login));
+    }
+
+    
 }

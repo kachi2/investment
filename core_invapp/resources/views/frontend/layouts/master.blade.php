@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="{{ asset('/assets/css/front.css') }}">
     <link rel="stylesheet" href="{{ asset('/assets/slider/carouselTicker.css') }}">
 @if(sys_settings('ui_theme_skin', 'default')!='default')
-    <link rel="stylesheet" href="{{ asset('assets/css/skins/theme-'.sys_settings('ui_theme_skin').'.css?ver=1.0.0') }}">
+    <link rel="stylesheet" href="{{ asset('/assets/css/skins/theme-'.sys_settings('ui_theme_skin').'.css?ver=1.0.0') }}">
 @endif
 @if(sys_settings('google_track_id'))
     <script async src="https://www.googletagmanager.com/gtag/js?id={{ sys_settings('google_track_id') }}"></script>

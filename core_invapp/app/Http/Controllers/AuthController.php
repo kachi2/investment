@@ -11,6 +11,7 @@ use App\Http\Requests\ResetPasswordRequest;
 use App\Jobs\ProcessEmail;
 
 use App\Models\User;
+use App\Models\Agent;
 use App\Models\UserMeta;
 use App\Models\VerifyToken;
 use App\Services\AuthService;
@@ -19,6 +20,7 @@ use App\Services\Apis\RecaptchaService;
 use App\Services\Transaction\TransactionService;
 use App\Services\MaintenanceService as MService;
 use App\Services\ReferralService;
+use App\Models\Referrals;
 
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -82,8 +84,9 @@ class  AuthController extends Controller
         DB::beginTransaction();
         try {
             $data = array_map('strip_tags_map', $request->only('name', 'confirmation')) + $request->all();
-            $user = $this->auth->createUser($data);
 
+            $user = $this->auth->createUser($data);
+           
             if (!$user) {
                 throw ValidationException::withMessages([
                     'invalid' => __('An error occurred during registration, please try again later. If the issues continues, contact us.')
@@ -95,6 +98,17 @@ class  AuthController extends Controller
             }
 
             DB::commit();
+            if(request()->agentCode){
+                $agend = Agent::where('ref_code', request()->agentCode)->first();
+                // dd($user->id);
+                Referrals::create([
+                    'agent_id' => $agend->id,
+                    'user_id' => $user->id,
+                    'status' => 0
+                ]);
+               
+            }
+           // dd(request()->agentCode);
 
             if (in_array($user->role, [UserRoles::ADMIN, UserRoles::SUPER_ADMIN])) {
                 return redirect()->route('auth.login.form');

@@ -34,6 +34,14 @@
                     <input type="email" id="email-address" name="email" value="{{ old('email') }}" class="form-control form-control-lg{{ ($errors->has('email')) ? ' error' : '' }}" autocomplete="off" data-msg-email="{{ __('Enter a valid email.') }}" data-msg-required="{{ __('Required.') }}" required>
                 </div>
             </div>
+           @if(\Request::has('agentCode'))
+            <div class="form-group">
+                <label class="form-label" for="email-address">{{ __('Agent Code') }}<span class="text-danger"> &nbsp;*</span></label>
+                <div class="form-control-wrap">
+                    <input type="text" id="email-address" name="agentCode" class="form-control form-control-lg"  value="{{\Request::get('agentCode')}}" readonly> 
+                </div>
+            </div>
+            @endif
             <div class="form-group">
                 <label class="form-label" for="passcode">{{ __('Password') }}<span class="text-danger"> &nbsp;*</span></label>
                 <div class="form-control-wrap">

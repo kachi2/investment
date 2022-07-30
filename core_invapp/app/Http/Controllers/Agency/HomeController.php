@@ -23,7 +23,7 @@ class HomeController extends Controller
         public function __construct()
         {
            
-        //return $this->middleware('agent');
+        return $this->middleware('agent');
            
         }
         public function Index(){
@@ -85,7 +85,12 @@ class HomeController extends Controller
             }
             $payment = Salary::where('agent_id', agent_user()->id)->latest()->first();
             $now = Carbon::now();
-            if($payment->pay_day > $now){
+            if($payment == null){
+                $payment = $now->addDays(14);
+            }else{
+                $payment = $payment->pay_day;
+            }
+            if($payment > $now){
             
                 Session::flash('alert', 'error');
                 Session::flash('msg', "Your next payment is on ". Date("M,d", strtotime($payment->next_pay)));
@@ -143,8 +148,6 @@ class HomeController extends Controller
             return redirect()->back();
             }
         }
-        public function AgentReferral(){
-            return view('agency.referral');
-        }
+       
     
 }

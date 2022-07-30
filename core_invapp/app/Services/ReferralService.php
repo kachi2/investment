@@ -91,4 +91,8 @@ class ReferralService extends Service
         session(['nio-refer-by' => '']);
         session(['nio-refer-code' => '']);
     }
+
+    public function AgentRef(){
+        
+    }
 }

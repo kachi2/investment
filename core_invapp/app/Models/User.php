@@ -181,6 +181,14 @@ class User extends Authenticatable
             ->limit(20);
     }
 
+    public function deposit()
+    {
+        return $this->hasMany(Transaction::class)
+            ->where('type', 'deposit')
+            ->orderBy('created_at', 'desc')
+            ->limit(1);
+    }
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      * @version 1.0.0

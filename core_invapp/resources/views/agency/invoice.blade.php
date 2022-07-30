@@ -121,7 +121,7 @@
                                             <tr class="bg-black text-white">
                                                 <th colspan="2" class="border-0"></th>                                                        
                                                 <td class="border-0 font-14"><b>Total</b></td>
-                                                <td class="border-0 font-14"><b>{{moneyFormat($salary->total, 'USD')}}</b></td>
+                                                <td class="border-0 font-14"><b>{{'$'.$salary->total}}</b></td>
                                             </tr><!--end tr-->
                                         </tbody>
                                     </table><!--end table-->

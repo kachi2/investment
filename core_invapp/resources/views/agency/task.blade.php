@@ -36,9 +36,8 @@
 
                             
                      
-                        @foreach ($tasks as  $task) <div class="col-lg-6">
-
-                        
+                        @forelse ($tasks as  $task) 
+                        <div class="col-lg-6">
                             <div class="card">
                                 <div class="card-body">                                    
                                     <div class="task-box">
@@ -80,7 +79,23 @@
                             
                         </div><!--end col-->
 
-                        @endforeach
+                        @empty
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-body">                                    
+                                    <div class="task-box">
+                                        <div class="task-priority-icon"> <i class="fas fa-circle text-success"></i> </div>
+                                        <p> You dont have any task yet, check back later</p>
+                                       
+                                        <div class="progress mb-4" style="height: 4px;">
+                                            <div class="progress-bar bg-secondary" role="progressbar" style="width: %;" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>                                      
+                                    </div><!--end task-box-->
+                                </div><!--end card-body-->
+                            </div><!--end card-->
+                            
+                        </div>
+                        @endforelse
                     </div><!--end row-->
 
                 </div><!-- container -->

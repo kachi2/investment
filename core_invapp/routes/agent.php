@@ -17,9 +17,9 @@ Route::get('/registration/{id}', 'AuthController@CompleteRegistration')->name('a
 Route::post('/completion/{id}', 'AuthController@AccountCompleted')->name('agency.AccountCompleted');
 Route::get('/login', 'AuthController@Login')->name('Agent-login');
 Route::post('/logins', 'AuthController@Logins')->name('agent.login');
+
+Route::middleware('agent')->group(function(){
 Route::post('/logout', 'AuthController@logout')->name('agent.logout');
-
-
 Route::get('/', 'HomeController@index')->name('agency.index');
 Route::get('/home', 'HomeController@index')->name('agency.index');
 Route::get('index', 'HomeController@index')->name('agency.index');
@@ -29,4 +29,11 @@ Route::get('/agent/salary', 'HomeController@SalaryPayments')->name('agency.salar
 Route::post('/agent/salary/invoice', 'HomeController@SalaryInvoice')->name('salary.invoice');
 Route::get('/agent/salary/invoice/{id}', 'HomeController@SalaryInvoices')->name('salaries.invoice');
 Route::post('/agent/process/payment/', 'HomeController@paymentProcessor')->name('agentProcess.payment');
-Route::get('/agent/referral', 'HomeController@AgentReferral')->name('agent.referral');
+Route::get('/agency/account', 'HomeController@account')->name('agency.account');
+
+
+#============== Agent referral ==================
+Route::get('/referral', 'ReferralController@AgentReferral')->name('agent.referral');
+Route::get('/referral/ref/', 'ReferralController@register')->name('agent.referral.register'); 
+Route::get('/claim/bonus/{id}', 'ReferralController@ClaimBonus')->name('referal.claimBonus');
+});

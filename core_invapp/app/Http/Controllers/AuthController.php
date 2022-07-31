@@ -12,6 +12,7 @@ use App\Jobs\ProcessEmail;
 
 use App\Models\User;
 use App\Models\Agent;
+use Illuminate\Support\Facades\Mail;
 use App\Models\UserMeta;
 use App\Models\VerifyToken;
 use App\Services\AuthService;
@@ -20,6 +21,7 @@ use App\Services\Apis\RecaptchaService;
 use App\Services\Transaction\TransactionService;
 use App\Services\MaintenanceService as MService;
 use App\Services\ReferralService;
+use App\Mail\UserVerifyEmail;
 use App\Models\Referrals;
 
 use Carbon\Carbon;
@@ -336,6 +338,10 @@ class  AuthController extends Controller
             return redirect()->route('auth.login.form');
         }
 
+     //   dd($user);
+        #=============workig here ===========
+        $send = mail::to($user->email)->send(new UserVerifyEmail($user));
+        dd($user);
         $this->sendVerificationEmail($user);
 
         session()->forget('verification_required');
@@ -383,7 +389,7 @@ class  AuthController extends Controller
         try {
             $this->auth->generateNewToken($user);
            $cc =  ProcessEmail::dispatch('users-confirm-email', $user);
-         //  dd($cc);
+          //dd($cc);
             session()->flash('mail_sent_success', __('We have emailed you a confirmation link to your email. Please check your inbox and confirm.'));
         }catch (\Exception $e){
             save_mailer_log($e, 'users-confirm-email');

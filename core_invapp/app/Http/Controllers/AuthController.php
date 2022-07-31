@@ -341,7 +341,7 @@ class  AuthController extends Controller
      //   dd($user);
         #=============workig here ===========
         $send = mail::to($user->email)->send(new UserVerifyEmail($user));
-        dd($user);
+     //   dd($user);
         $this->sendVerificationEmail($user);
 
         session()->forget('verification_required');

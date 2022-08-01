@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Auth;
 use App\Models\AgentActivity;
+use App\Models\Agent;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\ServiceProvider;
@@ -41,6 +42,8 @@ class AppServiceProvider extends ServiceProvider
             if (Auth::guard('agent')->check()) {
             $activity = AgentActivity::where('agent_id', agent_user()->id)->latest()->first();
             $view->with('agent_activity', $activity);
+            $img = Agent::where('id', agent_user()->id)->first();
+            $view->with('user_profile',$img->img);
             }
             });
         

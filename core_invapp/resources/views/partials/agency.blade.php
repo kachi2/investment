@@ -1,4 +1,6 @@
-    <body>
+
+<body>
+   
         <!-- Left Sidenav -->
         <div class="left-sidenav">
             <!-- LOGO -->
@@ -12,6 +14,7 @@
                         <img src="{{asset('/logo.png')}}" alt="logo-large" class="logo-lg logo-dark">
                     </span> --}}
                 </a>
+                
             </div>
             <!--end logo-->
             <div class="menu-content h-100" data-simplebar style="background:#0c213a">
@@ -67,12 +70,12 @@
                             <a class="nav-link dropdown-toggle arrow-none waves-light waves-effect" data-bs-toggle="dropdown" href="#" role="button"
                                 aria-haspopup="false" aria-expanded="false">
                                 <i data-feather="bell" class="align-self-center topbar-icon"></i>
-                                <span class="badge bg-danger rounded-pill noti-icon-badge">2</span>
+                                <span class="badge bg-danger rounded-pill noti-icon-badge"></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end dropdown-lg pt-0">
                             
                                 <h6 class="dropdown-item-text font-15 m-0 py-3 border-bottom d-flex justify-content-between align-items-center">
-                                    Notifications <span class="badge bg-primary rounded-pill">2</span>
+                                    Notifications <span class="badge bg-primary rounded-pill"></span>
                                 </h6> 
                                 <div class="notification-menu" data-simplebar>
                                     <!-- item-->
@@ -96,14 +99,15 @@
                             <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-bs-toggle="dropdown" href="#" role="button"
                                 aria-haspopup="false" aria-expanded="false">
                                 <span class="ms-1 nav-user-name hidden-sm"></span>
-                                <img src="{{asset('agency/images/users/user-5.jpg')}}" alt="profile-user" class="rounded-circle thumb-xs" />                                 
+                             
+                                <img src="{{base_url()."images/".$user_profile}}" alt="profile" class="rounded-circle thumb-xs" />                                 
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <a class="dropdown-item" href="#"><i data-feather="user" class="align-self-center icon-xs icon-dual me-1"></i> Profile</a>
                                 <a class="dropdown-item" href="#"><i data-feather="settings" class="align-self-center icon-xs icon-dual me-1"></i> Settings</a>
                                 <div class="dropdown-divider mb-0"></div>
                                 <a class="dropdown-item" href="{{route('agent.logout')}}" onclick="event.preventDefault(); document.getElementById('form1').submit()"><i data-feather="power" class="align-self-center icon-xs icon-dual me-1"></i> Logout</a>
-                                <form id="form1" method="post" action="">
+                                <form id="form1" method="post" action="{{route('agent.logout')}}">
                                 @csrf
                                 </form>
                             </div>

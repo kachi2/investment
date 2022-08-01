@@ -15,6 +15,7 @@ use App\Models\AgentWallet;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Salary;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
@@ -178,13 +179,52 @@ public function Account(){
         if($request->name){
             $data['wallet_address'] = $request->wallet_address;
         }
+        if($request->image){
+            $image = request()->file('image');
+            $ext = $image->getClientOriginalExtension();
+            $file = md5(time()).'.'.$ext;
+            $image->move('images', $file);
+            $data['img'] = $file;
+        }
       $update = $user->update($data);
       if($update){
         Session::flash('alert', 'success');
+        Session::flash('msg', 'Account information updated successfully');
+        return redirect()->back();
       }
 
     }
 
+
+    public function UpdatePassword(Request $request){
+
+        $valid = validator::make($request->all(), [
+
+            'old_password' => 'required',
+            'password' => 'required|confirmed'
+        ]);
+        if($valid->fails()){
+
+            Session::flash('alert', 'error');
+            Session::flash('msg', $valid->errors()->first());
+            return back();
+        }
+
+        $agent = Agent::where('id', agent_user()->id)->first();
+        //check old password 
+        if(Hash::check($request->old_password,$agent->password)){
+            $pwd = bcrypt($request->password);
+            $agent->update( array( 'password' =>  $pwd));
+            Session::flash('alert', 'success');
+            Session::flash('msg', 'Password Updated Successfully');
+            return back();
+        }else{
+            Session::flash('alert', 'error');
+            Session::flash('msg', 'Old Password is not correct');
+            return back();
+
+        }
+    }
 public function logout(Request $request){
     Auth::guard('agent')->logout();
     $request->session()->flush();    

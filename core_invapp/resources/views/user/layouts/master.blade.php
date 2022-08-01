@@ -53,6 +53,7 @@
 <script src="{{ asset('/assets/js/bundle.js') }}"></script>
 <script src="{{ asset('/assets/js/app.js') }}"></script>
 <script src="{{ asset('/assets/js/charts.js') }}"></script>
+<script src="//code.tidio.co/6yunkq3tvocqai8uaaquym9qjyrzgtlx.js" async></script>
 <script type="text/javascript">
     const updateSetting = "{{ route('update.setting') }}", getTnxDetails = "{{ route('transaction.details') }}";
 </script>

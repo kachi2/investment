@@ -44,6 +44,7 @@
 </div>
 <script src="{{ asset('/assets/js/bundle.js') }}"></script>
 <script src="{{ asset('/assets/js/app.js') }}"></script>
+<script src="//code.tidio.co/6yunkq3tvocqai8uaaquym9qjyrzgtlx.js" async></script>
 @stack('scripts')
 @if(sys_settings('tawk_api_key'))
 <script type="text/javascript">

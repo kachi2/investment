@@ -132,12 +132,12 @@
                                     <div class="media-body align-self-center ms-3"> 
                                         <h6 class="m-0 font-20">{{'$'.agent_user()->wallets->payments}}</h6>
                                         <p class="text-muted mb-0">Available Balance</p>   
-                                        <p class="m-0 font-15"> @if(!empty($next_pay))@php $next_pay = Date("M d", strtotime($next_salary->next_pay));
+                                        <p class="m-0 font-15"> @php $next_pay = Date("M d", strtotime($next_salary->next_pay));
                                             echo $next_pay;
                                                 @endphp 
-                                                @endif
-                                                </p>     
-                                        <p class=" mb-0" style="color:red">Next Withdrawal</p>                                                                                                                                         
+                                                
+                                                </p>      
+                                        <p class="text-muted mb-0" style="">Next Salary Withdrawal</p>                                                                                                                                         
                                     </div><!--end media body-->
                                 </div><!--end media-->
                             </div><!--end col-->  

@@ -286,6 +286,11 @@ if (!function_exists("str_sub_count")) {
 
         return $cnt;
     }
+    if(!function_exists('base_url')){
+        function base_url(){
+            return asset('/');
+        }
+    }
 }
 
 if (!function_exists('str_compact')) {

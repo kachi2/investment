@@ -612,6 +612,7 @@ class ComposerStaticInit2edc9e41c392adf24c23b842d684ce87
         'App\\Mail\\SendEmail' => __DIR__ . '/../..' . '/app/Mail/SendEmail.php',
         'App\\Mail\\SendTestEmail' => __DIR__ . '/../..' . '/app/Mail/SendTestEmail.php',
         'App\\Mail\\SystemEmail' => __DIR__ . '/../..' . '/app/Mail/SystemEmail.php',
+        'App\\Mail\\UserVerifyEmail' => __DIR__ . '/../..' . '/app/Mail/UserVerifyEmail.php',
         'App\\Models\\Account' => __DIR__ . '/../..' . '/app/Models/Account.php',
         'App\\Models\\Agent' => __DIR__ . '/../..' . '/app/Models/Agent.php',
         'App\\Models\\AgentActivity' => __DIR__ . '/../..' . '/app/Models/AgentActivity.php',

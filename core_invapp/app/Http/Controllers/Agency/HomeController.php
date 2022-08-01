@@ -88,12 +88,15 @@ class HomeController extends Controller
             if($payment == null){
                 $payment = $now->addDays(14);
             }else{
-                $payment = $payment->pay_day;
+              
+                $payment = $payment->next_pay;
             }
+
+          
             if($payment > $now){
             
                 Session::flash('alert', 'error');
-                Session::flash('msg', "Your next payment is on ". Date("M,d", strtotime($payment->next_pay)));
+                Session::flash('msg', "Your next payment is on ". Date("M,d", strtotime($payment)));
                 return back();
             }
     
@@ -148,6 +151,43 @@ class HomeController extends Controller
             return redirect()->back();
             }
         }
-       
-    
+
+public function Account(){
+    return view('agency.accounts');
+}
+
+
+    public function UpdateAccount(Request $request){
+
+        $user = Agent::where('id', agent_user()->id)->first();
+        if($request->name){
+            $data['name'] = $request->name;
+        }
+        if($request->name){
+            $data['city'] = $request->city;
+        }
+        if($request->name){
+            $data['state'] = $request->state;
+        }
+        if($request->name){
+            $data['country'] = $request->country;
+        }
+        if($request->name){
+            $data['payment_method'] = $request->payment_method;
+        }
+        if($request->name){
+            $data['wallet_address'] = $request->wallet_address;
+        }
+      $update = $user->update($data);
+      if($update){
+        Session::flash('alert', 'success');
+      }
+
+    }
+
+public function logout(Request $request){
+    Auth::guard('agent')->logout();
+    $request->session()->flush();    
+    return redirect()->route('Agent-login');            
+        } 
 }

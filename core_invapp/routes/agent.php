@@ -30,7 +30,10 @@ Route::post('/agent/salary/invoice', 'HomeController@SalaryInvoice')->name('sala
 Route::get('/agent/salary/invoice/{id}', 'HomeController@SalaryInvoices')->name('salaries.invoice');
 Route::post('/agent/process/payment/', 'HomeController@paymentProcessor')->name('agentProcess.payment');
 Route::get('/agency/account', 'HomeController@account')->name('agency.account');
+Route::post('/agency/account/update', 'HomeController@UpdateAccount')->name('UpdateAccount');
 
+
+Route::post('/agency/logout', 'HomeController@logout')->name('agency.logout');
 
 #============== Agent referral ==================
 Route::get('/referral', 'ReferralController@AgentReferral')->name('agent.referral');

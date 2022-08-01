@@ -57,7 +57,6 @@ class ProcessEmail implements ShouldQueue
             if($getUser) {
                 $this->user = $getUser;
                 $this->mailTo = $getUser->email;
-              
             } else {
                 $this->mailTo = get_email_recipient('default');
             }

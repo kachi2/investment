@@ -126,23 +126,17 @@
                                         
                                         <td>@if($ref->user->deposit) <span class="badge badge-md badge-boxed  badge-soft-success">Deposited</span> @else <span class="badge badge-md badge-boxed  badge-soft-danger">No Deposit Found</span> @endif</td>
                                         <td>@if($ref->user->deposit) {{('$'.$ref->user->deposit[0]->amount/100 *5)}}</td>@else <td></td>@endif </td>
-                                        <td><small>@if($ref->status == 0 )  <a href="{{route('referal.claimBonus',encrypt($ref->id))}}"> Claim Bonus </a> @else  @endif</td>
-                                            
-                                           
+                                        <td><small>@if($ref->status == 0 )  <a href="{{route('referal.claimBonus',encrypt($ref->id))}}"> Claim Bonus </a> @else  @endif</td>   
                                     </tr>
                                     @empty
-                                        
-                                    @endforelse
-                                                                                                                                  
+                                    @endforelse                                                                                         
                                 </tbody>
-                            </table>
-                                                                           
+                            </table>                                          
                         </div><!--end table-responsive--> 
                     </div><!--end card-body-->                                                                                                        
                 </div><!--end card-->
             </div><!--end col-->     
         </div><!--end row-->
-
     </div><!-- container -->
 
     

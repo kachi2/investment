@@ -42,19 +42,20 @@
                     <hr class="hr-dashed hr-menu">
                     <li class="menu-label my-2">Manage Account</li>   
                     <li>
-                        <a href="widgets.html"><i data-feather="layers" class="align-self-center menu-icon"></i><span>Account</span></a>
+                        <a href="{{route('agency.account')}}"><i data-feather="layers" class="align-self-center menu-icon"></i><span>Account</span></a>
                     </li>   
                     <li>
                         <a href="{{route('agency.register')}}"><i data-feather="layers" class="align-self-center menu-icon"></i><span>Add Agent</span></a>
                     </li>   
                     <li>
-                        <a href="widgets.html"><i data-feather="layers" class="align-self-center menu-icon"></i><span>Logout</span><span class="badge badge-soft-success menu-arrow">New</span></a>
+                        <a href="{{route('agency.logout')}}" onclick="event.preventDefault(); document.getElementById('agency.logout').submit();"><i data-feather="layers" class="align-self-center menu-icon"></i><span>Logout</span><span class="badge badge-soft-success menu-arrow">New</span></a>
                     </li>       
-                </ul>
+                </ul>   <form action="{{route('agency.logout')}}" method="post" id="agency.logout">
+                    @csrf
+                </form>
             </div>
         </div>
         <!-- end left-sidenav-->
-        
 
         <div class="page-wrapper">
             <!-- Top Bar Start -->

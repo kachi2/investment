@@ -116,6 +116,7 @@ return array(
     'App\\Mail\\SendEmail' => $baseDir . '/app/Mail/SendEmail.php',
     'App\\Mail\\SendTestEmail' => $baseDir . '/app/Mail/SendTestEmail.php',
     'App\\Mail\\SystemEmail' => $baseDir . '/app/Mail/SystemEmail.php',
+    'App\\Mail\\UserVerifyEmail' => $baseDir . '/app/Mail/UserVerifyEmail.php',
     'App\\Models\\Account' => $baseDir . '/app/Models/Account.php',
     'App\\Models\\Agent' => $baseDir . '/app/Models/Agent.php',
     'App\\Models\\AgentActivity' => $baseDir . '/app/Models/AgentActivity.php',

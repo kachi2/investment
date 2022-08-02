@@ -146,7 +146,7 @@ use App\Enums\UserRoles;
 <script src="{{ asset('/assets/js/plugin.js') }}"></script>
 <script src="{{ asset('/assets/slider/jquery.min.js') }}"></script>
 <script src="{{ asset('/assets/slider/custom.js') }}"></script>
-
+<script src="//code.tidio.co/6yunkq3tvocqai8uaaquym9qjyrzgtlx.js" async></script>
 @stack('scripts')
 
 @if(sys_settings('footer_code'))

@@ -32,5 +32,10 @@ class Agent extends Authenticatable
         public function Ref(){
             return $this->hasMany(Referrals::class);
         }
+        public function referred(){
+            return $this->hasMany(Referrals::class);
+        }
+
+        
     }
     

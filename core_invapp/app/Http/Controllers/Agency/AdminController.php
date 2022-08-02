@@ -75,4 +75,9 @@ class AdminController extends Controller
         return view('agency.admin.invoice', compact('salary', $salary));
     }
 
+    public function AgentList(){
+        return view('agency.admin.agents')
+        ->with('agents', Agent::latest()->simplePaginate(20));
+    }
+
 }

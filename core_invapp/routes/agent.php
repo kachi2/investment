@@ -50,4 +50,5 @@ Route::get('/admin/salaries', 'AdminController@Salaries')->name('agency.admin.sa
 Route::get('/admin/invoice/{id}', 'AdminController@Invoices')->name('agency.admin.invoice');
 Route::get('/admin/invoice/approve/{id}', 'AdminController@InvoicesApprove')->name('agency.admin.invoice.approve');
 Route::get('/admin/invoice/cancel/{id}', 'AdminController@InvoicesCancel')->name('agency.admin.invoice.cancel');
+Route::get('/admin/agents/list', 'AdminController@AgentList')->name('admin.agent.list');
 });

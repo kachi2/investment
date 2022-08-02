@@ -349,10 +349,35 @@
         </div>
     </div>
 </section>
-<!-- howitwork area ends -->
 
 
+<div id="video" class="video-area section-big">
+    <div class="container">
+        <div class="row hr-center">
 
+            <div class="col-md-4 col-sm-8">
+                <div class="video-text">
+                    <h4>Learn more about Mazeoptions</h4>
+                    <h2>We are committed to what we say</h2>
+                    <p>With over 200 support team, we are committed to making sure our clients are happy always.</p>
+                </div>
+            </div>
+    
+            <div class="col-md-8 col-sm-4">
+                <div class="video-content">
+                    <!--<video  controls width="100%" height="auto"  src="{{asset('/Mazeoptions.mp4')}}"   playsinline>-->
+                    <!--  Your browser does not support the video tag.-->
+                    <!--</video>-->
+                    <video controls width="100%" height="auto" playsinline >
+                  <source src="{{asset('Mazeoptions.mp4')}}" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
 
 <!-- video area ends -->
 

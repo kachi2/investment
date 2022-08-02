@@ -71,7 +71,7 @@
                         <a href="{{route('agency.register')}}"><i data-feather="layers" class="align-self-center menu-icon"></i><span>Add Agent</span></a>
                     </li>
                     <li>
-                        <a href="{{route('agency.register')}}"><i data-feather="layers" class="align-self-center menu-icon"></i><span>Manage Agent</span></a>
+                        <a href="{{route('admin.agent.list')}}"><i data-feather="layers" class="align-self-center menu-icon"></i><span>Manage Agent</span></a>
                     </li>
                     @endif   
                     <li>

@@ -96,12 +96,17 @@ class AuthController extends Controller
                 'country' => $req->country,
             ]);
         if($update){
-        AgentWallet::create([
-            'agent_id' => $agent->id,
-            'payments' => 0,
-            'salary_paid' => 0,
-            'salary_pending' => 0,
-        ]);
+        $agentWalet = AgentWallet::where('agent_id', $agent->id)->first();
+        if(!$agentWalet){
+
+            AgentWallet::create([
+                'agent_id' => $agent->id,
+                'payments' => 0,
+                'salary_paid' => 0,
+                'salary_pending' => 0,
+            ]);
+        }
+       
         AgentActivity::create([
             'agent_id' => $agent->id,
             'last_login' => Carbon::now()->toDateTimeString(),
@@ -113,7 +118,7 @@ class AuthController extends Controller
             'task_type' => 'referral',
             'heading' => 'Welcome Task',
             'content' => 'Its time to prove you are good for this job, share your referral link on your profile to your friends and get 10 new users in 7 days',
-            'expired' => Carbon::now()->addDays(7),
+            'expires' => Carbon::now()->addDays(7),
             'bonus' => '$20',
             'completion' => 0
         ]);

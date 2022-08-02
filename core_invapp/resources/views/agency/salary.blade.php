@@ -120,7 +120,7 @@
                                         <label class="form-label" for="username">Payment Method</label>
                                         <div class="input-group">                                                                                         
                                             <select class="form-control" name="payment_method"> 
-                                                <option value="btc"> {{agent_user()->payment_method}}</option>
+                                                <option value="btc"> {{strtoupper(agent_user()->payment_method)}}</option>
                                                 
                                             </select>
                                         </div>                                    

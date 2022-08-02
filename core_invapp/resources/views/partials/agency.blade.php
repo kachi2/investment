@@ -68,6 +68,9 @@
                     </li>   
                     @else
                     <li>
+                        <a href="{{route('agency.account')}}"><i data-feather="layers" class="align-self-center menu-icon"></i><span> My Account</span></a>
+                    </li> 
+                    <li>
                         <a href="{{route('agency.register')}}"><i data-feather="layers" class="align-self-center menu-icon"></i><span>Add Agent</span></a>
                     </li>
                     <li>

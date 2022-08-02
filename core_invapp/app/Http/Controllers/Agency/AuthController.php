@@ -59,6 +59,12 @@ class AuthController extends Controller
 
     public function CompleteRegistration($id){
         $agent = Agent::where('id', decrypt($id))->first();
+        if($agent->password != null && $agent->is_accepted == 1){
+            Session::flash('alert', 'success');
+            Session::flash('msg', 'Account Setup Completed');
+
+            return redirect()->route('Agent-login');
+        }
         return view('agency.completeRegistration', compact('agent', $agent));
     }
 
@@ -84,9 +90,16 @@ class AuthController extends Controller
         }
 
         $agent = Agent::where('id', decrypt($id))->first();
+        if($agent->password != null && $agent->is_accepted == 1){
+            Auth::loginUsingId($agent->id);
+            $agent->update([
+                'login_counts' => 1
+            ]);
+            Session::flash('alert', 'success');
+            Session::flash('msg', 'Account Setup Completed');
+        }
         $update = Agent::where('id', $agent->id)
             ->update([
-
                 'password' => hash::make($req->password),
                 'city' => $req->address,
                 'doc' => $filename ,
@@ -98,7 +111,6 @@ class AuthController extends Controller
         if($update){
         $agentWalet = AgentWallet::where('agent_id', $agent->id)->first();
         if(!$agentWalet){
-
             AgentWallet::create([
                 'agent_id' => $agent->id,
                 'payments' => 0,
@@ -123,6 +135,9 @@ class AuthController extends Controller
             'completion' => 0
         ]);
         Auth::loginUsingId($agent->id);
+        $agent->update([
+            'login_counts' => 1
+        ]);
         Session::flash('alert', 'success');
         Session::flash('msg', 'Account Setup Completed');
         return redirect()->route('agency.index');
@@ -156,15 +171,12 @@ class AuthController extends Controller
             'browser' => $req->userAgent(),
             'login_ip' => $req->Ip(),
         ]);
-        //dd(auth::guard('agent'));
-   //dd(auth('agent')->user()->id);
         return redirect()->route('agency.index');
     }else{
         return redirect()->back()->withInput($req->all())->withErrors($valid);
     }
 
 }
-
     public function logout(){
         auth()->guard('agent')->logout();
         Session::flush();

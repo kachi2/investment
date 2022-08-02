@@ -66,7 +66,7 @@
                                                 </li>
                                                 <li class="list-item d-inline-block">
                                                     <a class="" href="#">
-                                                        <i class="mdi mdi-comment-outline text-primary font-15"></i>
+                                                        <i class="mdi text-primary font-15"></i>
                                                         <span class="text-muted fw-bold">@if($task->expires > now())Active @else Expired @endif</span>
                                                     </a>                                                                               
                                                 </li>

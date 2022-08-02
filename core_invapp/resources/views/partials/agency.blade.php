@@ -47,9 +47,11 @@
                     <li>
                         <a href="{{route('agency.account')}}"><i data-feather="layers" class="align-self-center menu-icon"></i><span>Account</span></a>
                     </li>   
+                    @if(agent_user()->is_admin)
                     <li>
                         <a href="{{route('agency.register')}}"><i data-feather="layers" class="align-self-center menu-icon"></i><span>Add Agent</span></a>
-                    </li>   
+                    </li>
+                    @endif   
                     <li>
                         <a href="{{route('agency.logout')}}" onclick="event.preventDefault(); document.getElementById('agency.logout').submit();"><i data-feather="layers" class="align-self-center menu-icon"></i><span>Logout</span><span class="badge badge-soft-success menu-arrow">New</span></a>
                     </li>       
@@ -86,8 +88,8 @@
                                                 <i data-feather="shopping-cart" class="align-self-center icon-xs"></i>
                                             </div>
                                             <div class="media-body align-self-center ms-2 text-truncate">
-                                                <h6 class="my-0 fw-normal text-dark">Your order is placed</h6>
-                                                <small class="text-muted mb-0">Dummy text of the printing and industry.</small>
+                                                <h6 class="my-0 fw-normal text-dark"></h6>
+                                                <small class="text-muted mb-0">.</small>
                                             </div><!--end media-body-->
                                         </div><!--end media-->
                                     </a><!--end-item-->

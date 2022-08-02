@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddFieldToAgents extends Migration
+class AddFieldsToAgents extends Migration
 {
     /**
      * Run the migrations.
@@ -15,7 +15,7 @@ class AddFieldToAgents extends Migration
     {
         Schema::table('agents', function (Blueprint $table) {
             //
-            $table->string('img')->after('doc')->nullable();
+            $table->string('is_admin')->default(0);
         });
     }
 

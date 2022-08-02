@@ -59,6 +59,7 @@ class HomeController extends Controller
         }
     
         public function SalaryPayments(){
+            
             return view('agency.salary')
             ->with('payments', Salary::where('agent_id', agent_user()->id)->get());
         }
@@ -67,15 +68,17 @@ class HomeController extends Controller
     
             $valid = Validator::make($request->all(), [
                 'amount' => 'required',
-                'payment_method' => 'required',
-                'wallet_address' => 'required'
             ]);
             if($valid->fails()){
                 Session::flash('alert', 'error');
                 Session::flash('msg', $valid->errors()->first());
                 return back();
             }
-    
+            if(!agent_user()->wallet_address){
+                Session::flash('alert', 'error');
+                Session::flash('msg', "Please update your salary payment Wallet Address"."<br>"."Got to your Account Section to update");
+                return back();
+            }
             if($request->amount < 500){
                 Session::flash('alert', 'error');
                 Session::flash('msg', "Amount should not be less than $500");
@@ -88,11 +91,7 @@ class HomeController extends Controller
                 Session::flash('msg', "Amount is greater than your Available Balance");
                 return back();
             }
-            if(!agent_user()->wallet_address){
-                Session::flash('alert', 'error');
-                Session::flash('msg', "Please update your salary payment Wallet Address"."<br>"."Got to your Account Section to update");
-                return back();
-            }
+           
             $payment = Salary::where('agent_id', agent_user()->id)->latest()->first();
             $now = Carbon::now();
             if($payment == null){

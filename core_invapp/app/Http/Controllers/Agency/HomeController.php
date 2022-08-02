@@ -39,8 +39,12 @@ class HomeController extends Controller
             $data['completed_task'] = AgentTask::where(['agent_id' => agent_user()->id])->where('completion', '=', '100')->where('created_at', '>', $date)->get();
             $data['activity'] = AgentActivity::where('agent_id', agent_user()->id)->where('created_at', '>', $date)->latest()->get();
             $data['activities'] = AgentActivity::where('agent_id', agent_user()->id)->latest()->take(6)->get();
-            $data['next_salary'] = Salary::where('agent_id', agent_user()->id)->latest()->first();
-           
+            $salary = Salary::where('agent_id', agent_user()->id)->latest()->first();
+            if($salary){
+                $data['next_pay'] = $salary->next_pay;
+            }else{
+                $data['next_pay'] = Carbon::now()->addDays(14);
+            }
             return view('agency.home', $data);
         }
     

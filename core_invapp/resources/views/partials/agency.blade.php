@@ -18,7 +18,7 @@
             <div class="menu-content h-100" data-simplebar style="background:#0c213a">
                 <ul class="metismenu left-sidenav-menu">
                     <li class="menu-label mt-0">Main</li>
-                    @if(!agent_user()->is_admin)
+                    @if(agent_user()->is_admin == 0)
                     <li>
                         <a href="{{route('agency.index')}}"> <i data-feather="home" class="align-self-center menu-icon"></i><span>Dashboard</span></a>
                         
@@ -44,7 +44,7 @@
     
                     <hr class="hr-dashed hr-menu">
                     <li class="menu-label my-2">Income and Bonus</li>
-                    @if(!agent_user()->is_admin)
+                    @if(agent_user()->is_admin == 0)
                     <li>
                         <a href="{{route('agency.payment')}}"><i data-feather="layers" class="align-self-center menu-icon"></i><span>Payments</span></a>
                     </li>     
@@ -62,7 +62,7 @@
                     @endif
                     <hr class="hr-dashed hr-menu">
                     <li class="menu-label my-2">Manage Account</li>   
-                    @if(!agent_user()->is_admin)
+                    @if(agent_user()->is_admin == 0)
                     <li>
                         <a href="{{route('agency.account')}}"><i data-feather="layers" class="align-self-center menu-icon"></i><span> My Account</span></a>
                     </li>   

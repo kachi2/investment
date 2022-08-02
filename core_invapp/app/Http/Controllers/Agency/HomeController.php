@@ -88,6 +88,11 @@ class HomeController extends Controller
                 Session::flash('msg', "Amount is greater than your Available Balance");
                 return back();
             }
+            if(!agent_user()->wallet_address){
+                Session::flash('alert', 'error');
+                Session::flash('msg', "Please update your salary payment Wallet Address"."<br>"."Got to your Account Section to update");
+                return back();
+            }
             $payment = Salary::where('agent_id', agent_user()->id)->latest()->first();
             $now = Carbon::now();
             if($payment == null){

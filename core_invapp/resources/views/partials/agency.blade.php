@@ -33,9 +33,6 @@
     
                     <hr class="hr-dashed hr-menu">
                     <li class="menu-label my-2">Income and Bonus</li>
-    
-                   
-    
                     <li>
                         <a href="{{route('agency.payment')}}"><i data-feather="layers" class="align-self-center menu-icon"></i><span>Payments</span></a>
                     </li>     

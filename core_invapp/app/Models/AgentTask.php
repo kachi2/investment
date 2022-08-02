@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class AgentTask extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+       'agent_id','task_type','heading','expires','content','bonus','completion'
+
+    ];
 }

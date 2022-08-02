@@ -26,4 +26,8 @@ class Referrals extends Model
             ->orderBy('created_at', 'desc')
             ->limit(20);
     }
+
+    public function referal(){
+        return $this->belongsTo(Agent::class, 'agent_id', 'id');
+    }
 }

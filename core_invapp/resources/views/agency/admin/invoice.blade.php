@@ -141,7 +141,10 @@
                         <div class="row d-flex justify-content-center">
                             <div class="col-lg-12 col-xl-4">
                                 <div class="float-end d-print-none">
-                                    <a href="javascript:window.print()" class="btn btn-soft-info btn-lg">Print</a>
+                                   @if($salary->is_approved == 0) <a href="{{route('agency.admin.invoice.approve', encrypt($salary->id))}}" class="btn btn-primary btn-sm">Approve Payment</a> 
+                                    <a href="{{route('agency.admin.invoice.cancel', encrypt($salary->id))}}" class="btn btn-soft-danger btn-sm">Cancel Payment</a> 
+                                    @endif
+                                     <a href="javascript:window.print()" class="btn btn-soft-info btn-lg">Print</a>
                                 </div>
                             </div><!--end col-->
                         </div><!--end row-->

@@ -35,7 +35,7 @@
                             <div class="col">
                                 <p class="text-dark mb-1 font-weight-semibold">Active Referrals</p>
                                 <h3 class="m-0">{{count($referals)}}</h3>
-                                <p class="mb-0 text-truncate text-muted"><span class="text-success"></span> Active in Last 14 Days</p>
+                                <p class="mb-0 text-truncate text-muted"><span class="text-danger">{{count($pending)}}</span> In-active Referrals</p>
                             </div>
                             <div class="col-auto align-self-center">
                                 <div class="report-main-icon bg-light-alt">
@@ -53,7 +53,7 @@
                             <div class="col">
                                 <p class="text-dark mb-1 font-weight-semibold">Total Referrals</p>
                                 <h3 class="m-0">{{count($referals)}}</h3>
-                                <p class="mb-0 text-truncate text-muted"><span class="badge-soft-success">5</span> In last 14 days</p>
+                                <p class="mb-0 text-truncate text-muted"><span class="badge-soft-success">{{count($new_registered)}}</span> In last 14 days</p>
                             </div>
                             <div class="col-auto align-self-center">
                                 <div class="report-main-icon bg-light-alt">
@@ -105,6 +105,7 @@
                                     <tr>
                                         <th>Name</th>
                                         <th>Email</th>
+                                        <th>Agent Email</th>
                                         <th>Date Registered</th>
                                         <th>Last Login</th>
                                         <th>Status</th>
@@ -117,8 +118,8 @@
                                     @forelse ($referals as $ref)
                                     <tr>
                                         <td>{{$ref->user->name}}</td>
-                                        <td>{{$ref->user->email}}
-                                        </td>
+                                        <td>{{$ref->user->email}} </td>
+                                        <td> {{$ref->referal->email}}</td>
                                         <td>{{$ref->user->created_at}}</td>
                                         <td>{{$ref->user->last_login}}</td>
                                         <td>@if($ref->user->status == 'active')<span class="badge badge-md badge-boxed  badge-soft-success">{{$ref->user->status}}</span> @else 
@@ -126,12 +127,13 @@
                                         
                                         <td>@if($ref->user->deposit) <span class="badge badge-md badge-boxed  badge-soft-success">Deposited</span> @else <span class="badge badge-md badge-boxed  badge-soft-danger">No Deposit Found</span> @endif</td>
                                         <td>@if($ref->user->deposit) {{('$'.$ref->user->deposit[0]->amount/100 *5)}}</td>@else <td></td>@endif </td>
-                                        <td><small>@if($ref->status == 0 )  <a href="{{route('referal.claimBonus',encrypt($ref->id))}}"> Claim Bonus </a> @else  @endif</td>   
+                                        
                                     </tr>
                                     @empty
                                     <tr>
                                         <td>No referal data found</td>
                                     </tr>
+                                  
                                     @endforelse                                                                                         
                                 </tbody>
                             </table>                                          

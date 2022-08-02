@@ -1,6 +1,4 @@
-
 <body>
-   
         <!-- Left Sidenav -->
         <div class="left-sidenav">
             <!-- LOGO -->
@@ -20,37 +18,64 @@
             <div class="menu-content h-100" data-simplebar style="background:#0c213a">
                 <ul class="metismenu left-sidenav-menu">
                     <li class="menu-label mt-0">Main</li>
+                    @if(!agent_user()->is_admin)
                     <li>
                         <a href="{{route('agency.index')}}"> <i data-feather="home" class="align-self-center menu-icon"></i><span>Dashboard</span></a>
                         
                     </li>
+                    
                     <li>
                         <a href="{{route('agent.referral')}}"><i data-feather="lock" class="align-self-center menu-icon"></i><span>My Referrals</span></a>
                     </li> 
                     <li>
                         <a href="{{route('agency.task')}}"><i data-feather="lock" class="align-self-center menu-icon"></i><span>My Task</span></a>
                     </li>
+                    @else
+                    <li>
+                        <a href="{{route('agency.admin.index')}}"><i data-feather="layers" class="align-self-center menu-icon"></i><span>Dashboard</span></a>
+                    </li>
+                    <li>
+                        <a href="{{route('agency.admin.referals')}}"><i data-feather="layers" class="align-self-center menu-icon"></i><span>Agent Referrals</span></a>
+                    </li>
+                    <li>
+                        <a href="{{route('agency.register')}}"><i data-feather="layers" class="align-self-center menu-icon"></i><span>Assign Task</span></a>
+                    </li>
+                    @endif
     
                     <hr class="hr-dashed hr-menu">
                     <li class="menu-label my-2">Income and Bonus</li>
+                    @if(!agent_user()->is_admin)
                     <li>
                         <a href="{{route('agency.payment')}}"><i data-feather="layers" class="align-self-center menu-icon"></i><span>Payments</span></a>
                     </li>     
                     <li>
                         <a href="{{route('agency.salary')}}"><i data-feather="layers" class="align-self-center menu-icon"></i><span>Salary</span></a>
                     </li> 
+                    @else
+                    
+                    <li>
+                        <a href="{{route('agency.admin.salaries')}}"><i data-feather="layers" class="align-self-center menu-icon"></i><span>Salaries</span></a>
+                    </li>
+                    <li>
+                        <a href="{{route('agency.admin.payments')}}"><i data-feather="layers" class="align-self-center menu-icon"></i><span>Hourly Payments</span></a>
+                    </li>
+                    @endif
                     <hr class="hr-dashed hr-menu">
                     <li class="menu-label my-2">Manage Account</li>   
+                    @if(!agent_user()->is_admin)
                     <li>
-                        <a href="{{route('agency.account')}}"><i data-feather="layers" class="align-self-center menu-icon"></i><span>Account</span></a>
+                        <a href="{{route('agency.account')}}"><i data-feather="layers" class="align-self-center menu-icon"></i><span> My Account</span></a>
                     </li>   
-                    @if(agent_user()->is_admin)
+                    @else
                     <li>
                         <a href="{{route('agency.register')}}"><i data-feather="layers" class="align-self-center menu-icon"></i><span>Add Agent</span></a>
                     </li>
+                    <li>
+                        <a href="{{route('agency.register')}}"><i data-feather="layers" class="align-self-center menu-icon"></i><span>Manage Agent</span></a>
+                    </li>
                     @endif   
                     <li>
-                        <a href="{{route('agency.logout')}}" onclick="event.preventDefault(); document.getElementById('agency.logout').submit();"><i data-feather="layers" class="align-self-center menu-icon"></i><span>Logout</span><span class="badge badge-soft-success menu-arrow">New</span></a>
+                        <a href="{{route('agency.logout')}}" onclick="event.preventDefault(); document.getElementById('agency.logout').submit();"><i data-feather="layers" class="align-self-center menu-icon"></i><span>Logout</span></a>
                     </li>       
                 </ul>   <form action="{{route('agency.logout')}}" method="post" id="agency.logout">
                     @csrf

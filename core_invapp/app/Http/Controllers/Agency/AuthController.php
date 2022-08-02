@@ -12,6 +12,8 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Agent;
 use App\Models\AgentActivity;
+use App\Models\AgentTask;
+use App\Models\AgentWallet;
 use Illuminate\Support\Facades\Mail;
 
 class AuthController extends Controller
@@ -94,6 +96,27 @@ class AuthController extends Controller
                 'country' => $req->country,
             ]);
         if($update){
+        AgentWallet::create([
+            'agent_id' => $agent->id,
+            'payments' => 0,
+            'salary_paid' => 0,
+            'salary_pending' => 0,
+        ]);
+        AgentActivity::create([
+            'agent_id' => $agent->id,
+            'last_login' => Carbon::now()->toDateTimeString(),
+            'browser' => $req->userAgent(),
+            'login_ip' => $req->Ip(),
+        ]);
+        AgentTask::create([
+            'agent_id' => $agent->id,
+            'task_type' => 'referral',
+            'heading' => 'Welcome Task',
+            'content' => 'Its time to prove you are good for this job, share your referral link on your profile to your friends and get 10 new users in 7 days',
+            'expired' => Carbon::now()->addDays(7),
+            'bonus' => '$20',
+            'completion' => 0
+        ]);
         Auth::loginUsingId($agent->id);
         Session::flash('alert', 'success');
         Session::flash('msg', 'Account Setup Completed');

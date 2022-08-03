@@ -147,6 +147,7 @@
                                 <i data-feather="menu" class="align-self-center topbar-icon"></i>
                             </button>
                         </li> 
+                        @if(auth('agent')->user()->is_admin != 1)
                         <li class="creat-btn">
                             <div class="nav-link">
                      <span id="info">      Click on Process payment once the countdown completes. Your Next payment </span>   <span id="countdowns"> </span> 
@@ -161,7 +162,15 @@
                 </span>  
                             </div>       
                                             
-                        </li>                           
+                        </li> @else 
+
+                        <li>
+                            <div class="nav-link">
+                                <span>   Admin Page </span>
+                            </div>
+                        </li>
+                        @endif
+                                                
                     </ul>
                 </nav>
                 <!-- end navbar-->

@@ -37,7 +37,7 @@ class AuthController extends Controller
         $agent->name = $req->name;
         $agent->email = $req->email;
         $agent->phone = $req->phone;
-        $agent->working_hours = 4;
+        $agent->working_hours = 8;
         $agent->pay_day = 14;
 
         if($agent->save()){

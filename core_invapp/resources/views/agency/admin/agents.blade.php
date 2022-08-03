@@ -1,16 +1,13 @@
 @extends('layouts.agency')
 @section('content')
-
 <div class="page-content">
     <div class="container-fluid">
-        <!-- Page-Title -->
         <div class="row">
             <div class="col-sm-12">
                 <div class="page-title-box">
                     <div class="row">
                         <div class="col">
                             <h4 class="page-title">Agent List</h4>
-                            
                         </div><!--end col-->
                         <div class="col-auto align-self-center">
                             <a href="#" class="btn btn-sm btn-outline-primary" id="Dash_Date">
@@ -27,8 +24,6 @@
             </div><!--end col-->
         </div><!--end row-->
         <!-- end page title end breadcrumb -->
-  
-
         <div class="row">
             <div class="col-12">
                 <div class="card">
@@ -41,7 +36,6 @@
                         <table id="row_callback" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
                             <tr>
-                                
                                 <th>Agent Name</th>
                                 <th>Agent Email</th>
                                 <th>No. of Referrals</th>
@@ -52,24 +46,18 @@
                                 <th></th>
                             </tr>
                             </thead>
-
-
                             <tbody>
-                         
-                           @foreach ($agents as $agent )
-                           
+                           @foreach ($agents as $agent)
                            <tr>
-                            
                                 <td>{{$agent->name}}</td>
                                 <td>{{$agent->email}}</td>
                                 <td>{{count($agent->referred)}}</td>
                                 <td>{{$agent->wallets->payments}}</td>
                                 <td>{{$agent->created_at}}</td>
-                                <td>{{$agent->status}}</td>
+                                <td>@if($agent->is_accepted== 1) <span class="badge bg-success">Active</span>@else <span class="badge bg-secondary">In-active</span>  @endif </td>
                                 <td>{{$agent->last_login}}</td>
-                               
                                 {{-- <td> @if($pay->is_approved == 1)<span class="badge bg-success">Invoice Paid</span>  @elseif($pay->is_approved == 0) <span class="badge bg-info">Invoice Pending</span>  @else <span class="badge bg-danger">Invoice Cancelled</span> @endif</td> --}}
-                                <td> <a href="" style="color:green"> View Agent</a></td> 
+                                <td> <a href="{{route('admin.agent.details', encrypt($agent->id))}}"> <span class="badge bg-success">View Agent</span></a></td> 
                             </tr>
                             @endforeach
                            
@@ -79,12 +67,7 @@
                 </div>
             </div> <!-- end col -->
         </div> <!-- end row -->
-
-      
-
     </div><!-- container -->
-
-
     <div class="modal fade" id="exampleModalLogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalDefaultLogin" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -159,13 +142,7 @@
                         </div>
                     </div><!--end card-body-->                                              
                 </div><!--end modal-body-->
-                
             </div><!--end modal-content-->
         </div><!--end modal-dialog-->
     </div><!--end modal-->
-
-
-
-
-
 @endsection

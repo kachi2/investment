@@ -80,10 +80,10 @@
 
 
 <script>
-   var time = 60*60; 
+   var time = 6; 
 var saved_countdown = localStorage.getItem('saved_countdown');
 
-if(saved_countdown == null) {
+if(saved_countdown != null) {
     var new_countdown = new Date().getTime() + (time + 2) * 1000;
     time = new_countdown;
     localStorage.setItem('saved_countdown', new_countdown);
@@ -104,7 +104,7 @@ var x = setInterval(() => {
         $('#info').attr('hidden', true);
         localStorage.removeItem('saved_countdown');
         clearInterval(x);
-        document.getElementById("countdowns").innerHTML = "Weldone!, An hour completed";
+        document.getElementById("countdowns").innerHTML = "<span style=\"color:green\">Weldone!, An hour completed. Please do not <span style=\"color:red; font-weight:bolder\">REFRESH</span></span>";
     }
 }, 1000);
     </script>

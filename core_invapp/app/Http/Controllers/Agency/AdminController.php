@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Carbon;
 use App\Models\Payment;
 use App\Models\AgentWallet;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
 use App\Models\AgentActivity;
 use App\Models\Salary;
 
@@ -78,6 +80,32 @@ class AdminController extends Controller
     public function AgentList(){
         return view('agency.admin.agents')
         ->with('agents', Agent::latest()->simplePaginate(20));
+    }
+
+    public function AgentDetails($id){
+        $agent = Agent::where('id', decrypt($id))->first();
+        return view('agency.admin.details', compact('agent', $agent));
+    }
+
+    public function changePass(Request $request, $id){
+
+        $valid = validator::make($request->all(), [
+            'password' => 'required|confirmed'
+        ]);
+        if($valid->fails()){
+
+            Session::flash('alert', 'error');
+            Session::flash('msg', $valid->errors()->first());
+            return back();
+        }
+
+        $agent = Agent::where('id', decrypt($id))->first();
+        //check old password 
+            $pwd = bcrypt($request->password);
+            $agent->update( array( 'password' =>  $pwd));
+            Session::flash('alert', 'success');
+            Session::flash('msg', 'Password Updated Successfully');
+            return back();
     }
 
 }

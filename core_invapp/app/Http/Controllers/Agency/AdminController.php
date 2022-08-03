@@ -108,4 +108,45 @@ class AdminController extends Controller
             return back();
     }
 
+    public function AgentTask(){
+        $tasks = AgentTask::latest()->simplePaginate(10);
+        return view('agency.admin.assign_task', compact('tasks', $tasks));
+    }
+
+    public function createTask(Request $request){
+        $valid = validator::make($request->all(), [
+
+            'heading' => 'required',
+            'bonus' => 'required',
+            'content' => 'required',
+            'referrals' => 'required',
+        ]);
+        if($valid->fails()){
+            Session::flash('alert', 'error');
+            Session::flash('msg', $valid->errors()->first());
+            return back();
+        }
+        $users = Agent::get();
+
+        foreach($users as $agents){
+            $task = new AgentTask;
+            $task->agent_id = $agents->id;
+            $task->task_type = 'referal';
+            $task->heading = $request->heading;
+            $task->expires = Carbon::now()->addDays(7);
+            $task->content = $request->content;
+            $task->referrals = $request->referrals;
+            $task->bonus = $request->bonus;
+            $task->completion = 0;
+            $task->save();
+        }
+
+      
+            Session::flash('alert', 'success');
+            Session::flash('msg', 'Task Assigned to all users successfully');
+            return back();
+        
+       
+
+    }
 }

@@ -53,4 +53,6 @@ Route::get('/admin/invoice/cancel/{id}', 'AdminController@InvoicesCancel')->name
 Route::get('/admin/agents/list', 'AdminController@AgentList')->name('admin.agent.list');
 Route::get('/admin/agent/details/{id}', 'AdminController@AgentDetails')->name('admin.agent.details');
 Route::post('/admin/agent/update/pass/{id}', 'AdminController@changePass')->name('admin.changePass');
+Route::get('admin/agent/task', 'AdminController@AgentTask')->name('admin.agent.task');
+Route::post('/admin/create/task', 'AdminController@createTask')->name('admin.create.task');
 });

@@ -557,6 +557,7 @@ class ComposerStaticInit2edc9e41c392adf24c23b842d684ce87
         'App\\Http\\Controllers\\Admin\\TransactionController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/TransactionController.php',
         'App\\Http\\Controllers\\Admin\\UpdateManagerController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/UpdateManagerController.php',
         'App\\Http\\Controllers\\Admin\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/UserController.php',
+        'App\\Http\\Controllers\\Agency\\AdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/Agency/AdminController.php',
         'App\\Http\\Controllers\\Agency\\AgentLoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Agency/AgentLoginController.php',
         'App\\Http\\Controllers\\Agency\\AuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/Agency/AuthController.php',
         'App\\Http\\Controllers\\Agency\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/Agency/HomeController.php',

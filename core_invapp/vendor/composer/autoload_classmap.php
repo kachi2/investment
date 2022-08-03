@@ -61,6 +61,7 @@ return array(
     'App\\Http\\Controllers\\Admin\\TransactionController' => $baseDir . '/app/Http/Controllers/Admin/TransactionController.php',
     'App\\Http\\Controllers\\Admin\\UpdateManagerController' => $baseDir . '/app/Http/Controllers/Admin/UpdateManagerController.php',
     'App\\Http\\Controllers\\Admin\\UserController' => $baseDir . '/app/Http/Controllers/Admin/UserController.php',
+    'App\\Http\\Controllers\\Agency\\AdminController' => $baseDir . '/app/Http/Controllers/Agency/AdminController.php',
     'App\\Http\\Controllers\\Agency\\AgentLoginController' => $baseDir . '/app/Http/Controllers/Agency/AgentLoginController.php',
     'App\\Http\\Controllers\\Agency\\AuthController' => $baseDir . '/app/Http/Controllers/Agency/AuthController.php',
     'App\\Http\\Controllers\\Agency\\HomeController' => $baseDir . '/app/Http/Controllers/Agency/HomeController.php',

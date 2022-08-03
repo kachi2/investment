@@ -38,7 +38,7 @@
                         <a href="{{route('agency.admin.referals')}}"><i data-feather="layers" class="align-self-center menu-icon"></i><span>Agent Referrals</span></a>
                     </li>
                     <li>
-                        <a href="{{route('agency.register')}}"><i data-feather="layers" class="align-self-center menu-icon"></i><span>Assign Task</span></a>
+                        <a href="{{route('admin.agent.task')}}"><i data-feather="layers" class="align-self-center menu-icon"></i><span>Assign Task</span></a>
                     </li>
                     @endif
     

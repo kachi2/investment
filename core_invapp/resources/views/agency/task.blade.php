@@ -33,20 +33,17 @@
                     <!-- end page title end breadcrumb -->
                  
                     <div class="row">
-
-                            
-                     
                         @forelse ($tasks as  $task) 
                         <div class="col-lg-6">
                             <div class="card">
                                 <div class="card-body">                                    
                                     <div class="task-box">
-                                        <div class="task-priority-icon"> @if($task->expires > now())<i class="fas fa-circle text-success"></i> @else <i class="fas fa-circle text-danger"></i> @endif</div>
+                                        <div class="task-priority-icon"> @if($task->expires > now())<i class="fas fa-circle text-success">Active</i> @else <i class="fas fa-circle text-danger">Expired</i> @endif</div>
                                         <p class="text-muted float-end">
                                             
-                                            <span class="text-muted">{{$task->created_at->format('h:m:a')}}</span> 
+                                            Created: <span class="text-muted">{{$task->created_at->format('d/m/y')}}</span> 
                                             <span class="mx-1">·</span> 
-                                            <span><i class="far fa-fw fa-clock"></i>{{$task->created_at->format('M d')}}</span>
+                                            Expires: <span><i class="far fa-fw fa-clock"></i>{{Date("d/m/Y", strtotime($task->expires))}}</span>
                                         </p>
                                         <h5 class="mt-0">{{$task->heading}}</h5>
                                         <p class="text-muted mb-1">{{$task->content}}
@@ -57,19 +54,21 @@
                                         </div>
                                         <div class="d-flex justify-content-between">
                                             
-                                            <ul class="list-inline mb-0 align-self-center">                                                                    
+                                            <ul class="list-inline mb-0 align-self-center">  
                                                 <li class="list-item d-inline-block me-2">
                                                     <a class="" href="#">
-                                                        <i class="mdi mdi-format-list-bulleted text-success font-15"></i>
-                                                        <span class="text-muted fw-bold">{{$task->completion}}/100</span>
+                                                        <span class="text-muted "> No of Referrals: {{$task->referrals}} </span>
                                                     </a>
                                                 </li>
-                                                <li class="list-item d-inline-block">
+                                                <li class="list-item d-inline-block me-2">
                                                     <a class="" href="#">
-                                                        <i class="mdi text-primary font-15"></i>
-                                                        <span class="text-muted fw-bold">@if($task->expires > now())Active @else Expired @endif</span>
-                                                    </a>                                                                               
-                                                </li>
+                                                        <span class="text-muted ">Bonus: {{'$'.$task->bonus}}</span>
+                                                    </a>
+                                                </li>                                                                  
+                                                
+                            
+                                                <br>
+                                                <small class="text-muted"> Task is assigned to {{$task->agent->email}} </small>    
                                                 
                                             </ul>
                                         </div>                                        

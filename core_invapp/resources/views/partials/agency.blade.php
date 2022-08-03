@@ -99,7 +99,7 @@
                                 <i data-feather="bell" class="align-self-center topbar-icon"></i>
                                 <span class="badge bg-danger rounded-pill noti-icon-badge"></span>
                             </a>
-                            <div class="dropdown-menu dropdown-menu-end dropdown-lg pt-0">
+                            {{-- <div class="dropdown-menu dropdown-menu-end dropdown-lg pt-0">
                             
                                 <h6 class="dropdown-item-text font-15 m-0 py-3 border-bottom d-flex justify-content-between align-items-center">
                                     Notifications <span class="badge bg-primary rounded-pill"></span>
@@ -107,10 +107,10 @@
                                 <div class="notification-menu" data-simplebar>
                                     <!-- item-->
                                     <a href="#" class="dropdown-item py-3">
-                                        <small class="float-end text-muted ps-2">2 min ago</small>
+                                        
                                         <div class="media">
                                             <div class="avatar-md bg-soft-primary">
-                                                <i data-feather="shopping-cart" class="align-self-center icon-xs"></i>
+                                      
                                             </div>
                                             <div class="media-body align-self-center ms-2 text-truncate">
                                                 <h6 class="my-0 fw-normal text-dark"></h6>
@@ -119,7 +119,7 @@
                                         </div><!--end media-->
                                     </a><!--end-item-->
                                 </div>
-                            </div>
+                            </div> --}}
                         </li>
 
                         <li class="dropdown">
@@ -130,8 +130,7 @@
                                 <img src="{{base_url()."images/".$user_profile}}" alt="profile" class="rounded-circle thumb-xs" />                                 
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a class="dropdown-item" href="#"><i data-feather="user" class="align-self-center icon-xs icon-dual me-1"></i> Profile</a>
-                                <a class="dropdown-item" href="#"><i data-feather="settings" class="align-self-center icon-xs icon-dual me-1"></i> Settings</a>
+                                <a class="dropdown-item" href="{{route('agency.account')}}"><i data-feather="user" class="align-self-center icon-xs icon-dual me-1"></i> Profile</a>
                                 <div class="dropdown-divider mb-0"></div>
                                 <a class="dropdown-item" href="{{route('agent.logout')}}" onclick="event.preventDefault(); document.getElementById('form1').submit()"><i data-feather="power" class="align-self-center icon-xs icon-dual me-1"></i> Logout</a>
                                 <form id="form1" method="post" action="{{route('agent.logout')}}">

@@ -138,7 +138,7 @@
                                 </form>
                             </div>
                         </li>
-                    </ul><!--end topbar-nav-->
+                    </ul>
         
                     <ul class="list-unstyled topbar-nav mb-0">                        
                         <li>

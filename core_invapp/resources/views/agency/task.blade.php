@@ -64,10 +64,8 @@
                                                     <a class="" href="#">
                                                         <span class="text-muted ">Bonus: {{'$'.$task->bonus}}</span>
                                                     </a>
-                                                </li>                                                                  
-                                                
-                            
-                                                <br>
+                                                </li>     
+                                                 <br>
                                                 <small class="text-muted"> Task is assigned to {{$task->agent->email}} </small>    
                                                 
                                             </ul>

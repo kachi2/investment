@@ -77,7 +77,6 @@
                             </div><!--end card-->
                             
                         </div><!--end col-->
-
                         @empty
                         <div class="col-lg-6">
                             <div class="card">

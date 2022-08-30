@@ -80,7 +80,7 @@
 
 
 <script>
-   var time = 60*60; 
+   var time = 5; 
 var saved_countdown = localStorage.getItem('saved_countdown');
 
 if(saved_countdown == null) {

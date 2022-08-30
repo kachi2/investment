@@ -41,6 +41,7 @@ Route::get('/', 'PublicController@welcome')->name('welcome');
 Route::get('/language', 'PublicController@language')->name('language');
 Route::get('/investments', 'PublicController@investments')->name('investments');
 Route::get('/page/{slug}', 'PageController')->name('show.page');
+
 Route::middleware(['guest'])->group(function(){
 	Route::get('/login', 'AuthController@loginForm')->name('auth.login.form');
 	Route::post('/login', 'AuthController@login')->name('auth.login');
@@ -55,6 +56,7 @@ Route::middleware(['guest'])->group(function(){
 
 });
 
+Route::get('/privacy', 'PublicController@PrivayPolicy')->name('privacy.policy');
 Route::get('/password/reset', 'AuthController@resetPasswordView')->name('auth.reset.page');
 Route::post('/password/reset', 'AuthController@resetPassword')->name('auth.reset');
 

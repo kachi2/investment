@@ -1,16 +1,12 @@
 @extends('vendor.installer.layouts.master')
-
 @section('template_title')
     {{ trans('installer_messages.requirements.templateTitle') }}
 @endsection
-
 @section('title')
     <i class="fa fa-list-ul fa-fw" aria-hidden="true"></i>
     {{ trans('installer_messages.requirements.title') }}
 @endsection
-
 @section('container')
-
     @foreach($requirements['requirements'] as $type => $requirement)
         <ul class="list">
             <li class="list__item list__title {{ $phpSupportInfo['supported'] ? 'success' : 'error' }}">
@@ -37,7 +33,6 @@
             @endforeach
         </ul>
     @endforeach
-
     @if ( ! isset($requirements['errors']) && $phpSupportInfo['supported'] )
         <div class="buttons">
             <a class="button" href="{{ route('LaravelInstaller::permissions') }}">
@@ -46,5 +41,4 @@
             </a>
         </div>
     @endif
-
 @endsection

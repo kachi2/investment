@@ -61,7 +61,7 @@ use App\Enums\UserRoles;
                                 <li class="menu-item"><a href="{{ route('investments') }}" class="menu-link nav-link">{{ __("Investment") }}</a></li>
                                 @endif
                                 {!! Panel::navigation('mainnav') !!}
-
+                                <li class="menu-item"><a href="{{ route('privacy.policy') }}" class="menu-link nav-link">{{ __("Privacy Policy") }}</a></li>
                                 @if (!auth()->check() && gss('signup_allow', 'enable') == 'enable')
                                 <li class="menu-item"><a href="{{ route('auth.register.form') }}" class="menu-link nav-link">{{ __("Register") }}</a></li>
                                 @endif

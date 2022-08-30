@@ -326,8 +326,8 @@ class InvestmentController extends Controller
         if (is_locked('profit')) {
             throw ValidationException::withMessages(['invalid' => __("Sorry, one of your system administrator is working, please try again after few minutes.")]);
         }
-      // $payout = IvProfit::where(['user_id' => auth()->user()->id, 'payout' => null]);
-      $payout = IvProfit::whereNull('payout');
+       $payout = IvProfit::where(['user_id' => auth()->user()->id, 'payout' => null]);
+    // $payout = IvProfit::whereNull('payout');
         $amount = $payout->sum('amount');
         $total = $payout->count();
        

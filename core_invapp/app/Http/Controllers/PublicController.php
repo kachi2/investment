@@ -125,7 +125,13 @@ class PublicController extends Controller
         }
 
         $schemes = $schemeQuery->where('status', SchemeStatus::ACTIVE)->get();
-
         return view('frontend.investments', compact('schemes', 'admins'));
+    }
+
+    public function PrivayPolicy(){
+        $logged      = Auth::check();
+        $admins      = ($logged && in_array(Auth::user()->role, [UserRoles::ADMIN, UserRoles::SUPER_ADMIN]));
+
+        return view('frontend.privacy', compact( 'admins'));
     }
 }

@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Investorm'),
+    'name' => env('APP_NAME', 'Theadventcapital'),
 
     'build' => '20210628',
 

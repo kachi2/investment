@@ -31,8 +31,9 @@ class HomeController extends Controller
     
         public function Index(){
             if(!auth('agent')->user()){
-                $return =  redirect()->route('Agent-login');
+               return redirect()->route('Agent-login');
             }
+
             $date = Carbon::now()->addDays(-14);
             $data['agent'] = Agent::where('id', auth('agent')->user()->id)->first();
             $data['referrals'] = Referrals::where('agent_id', agent_user()->id)->get();

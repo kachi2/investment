@@ -80,11 +80,11 @@
 
 
 <script>
-   var time = 5; 
+   var time = 0;
 var saved_countdown = localStorage.getItem('saved_countdown');
 
 if(saved_countdown == null) {
-    var new_countdown = new Date().getTime() + (time + 2) * 1000;
+    var new_countdown = new Date().getTime() + (60 * 60 ) * 1000;
     time = new_countdown;
     localStorage.setItem('saved_countdown', new_countdown);
 } else {
@@ -93,6 +93,7 @@ if(saved_countdown == null) {
 var x = setInterval(() => {
     var now = new Date().getTime();
     var distance = time - now;
+
   var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
   var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 

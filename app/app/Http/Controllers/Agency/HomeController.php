@@ -27,7 +27,12 @@ class HomeController extends Controller
         return $this->middleware('agent');
            
         }
+
+    
         public function Index(){
+            if(!auth('agent')->user()){
+                $return =  redirect()->route('Agent-login');
+            }
             $date = Carbon::now()->addDays(-14);
             $data['agent'] = Agent::where('id', auth('agent')->user()->id)->first();
             $data['referrals'] = Referrals::where('agent_id', agent_user()->id)->get();
@@ -49,23 +54,33 @@ class HomeController extends Controller
         }
     
         public function Task(){
+            if(!auth('agent')->user()){
+                $return =  redirect()->route('Agent-login');
+            }
             return view('agency.task')
             ->with('tasks', AgentTask::where('agent_id', agent_user()->id)->get());
         }
     
         public function Payments(){
+            if(!auth('agent')->user()){
+                $return =  redirect()->route('Agent-login');
+            }
             return view('agency.payments')
             ->with('payments', Payment::where('agent_id', agent_user()->id)->latest()->get());
         }
     
         public function SalaryPayments(){
-            
+            if(!auth('agent')->user()){
+                $return =  redirect()->route('Agent-login');
+            }
             return view('agency.salary')
             ->with('payments', Salary::where('agent_id', agent_user()->id)->get());
         }
     
         public function SalaryInvoice(Request $request){
-    
+            if(!auth('agent')->user()){
+                $return =  redirect()->route('Agent-login');
+            }
             $valid = Validator::make($request->all(), [
                 'amount' => 'required',
             ]);
@@ -100,8 +115,6 @@ class HomeController extends Controller
               
                 $payment = $payment->next_pay;
             }
-
-          
             if($payment > $now){
             
                 Session::flash('alert', 'error');
@@ -141,11 +154,17 @@ class HomeController extends Controller
         }
     
         public function SalaryInvoices($id){
+            if(!auth('agent')->user()){
+                $return =  redirect()->route('Agent-login');
+            }
             $salary = Salary::where('id', decrypt($id))->first();
             return view('agency.invoice', compact('salary', $salary));
         }
     
         public function paymentProcessor(){
+            if(!auth('agent')->user()){
+                $return =  redirect()->route('Agent-login');
+            }
             $ref = generate_reference();
             $payment = new Payment;
             $payment->agent_id = agent_user()->id;
@@ -162,12 +181,17 @@ class HomeController extends Controller
         }
 
 public function Account(){
+    if(!auth('agent')->user()){
+        $return =  redirect()->route('Agent-login');
+    }
     return view('agency.accounts');
 }
 
 
     public function UpdateAccount(Request $request){
-
+        if(!auth('agent')->user()){
+            $return =  redirect()->route('Agent-login');
+        }
         $user = Agent::where('id', agent_user()->id)->first();
         if($request->name){
             $data['name'] = $request->name;
@@ -205,7 +229,9 @@ public function Account(){
 
 
     public function UpdatePassword(Request $request){
-
+        if(!auth('agent')->user()){
+            $return =  redirect()->route('Agent-login');
+        }
         $valid = validator::make($request->all(), [
 
             'old_password' => 'required',

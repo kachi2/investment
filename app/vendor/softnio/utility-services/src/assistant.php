@@ -113,11 +113,10 @@ if (!function_exists('site_logo')) {
 
         return Cache::remember($key.'_'.$logo, 3600*24*30, function () use ($default, $key, $logo) {
             $path = gss($key.'_'.$logo);
-
+         
             if (Str::contains($logo, '2x') && empty($path)) {
                 $path = gss($key.'_'.str_replace('2x', '', $logo));
             }
-
             $brand = '';
             if (!empty($path) && Storage::exists($path)) {
                 $brand = Storage::get($path);

@@ -1,7 +1,7 @@
 <div class="nk-sidebar nk-sidebar-fixed{{ (gui('admin', 'sidebar')=='darker') ? ' is-dark' : ' is-light' }}" data-content="sidebarMenu">
     <div class="nk-sidebar-element nk-sidebar-head">
 
-        {{ site_branding('sidebar', ['panel' => 'back', 'class_link' => 'nk-sidebar-logo', 'size' => 24]) }}
+      <h5 style="color:#fff"> Adventcap</h5> 
 
         <div class="nk-menu-trigger mr-n2">
             <a href="javascript:void(0)" class="nk-nav-toggle nk-quick-nav-icon d-xl-none" data-target="sidebarMenu"><em class="icon ni ni-arrow-left"></em></a>

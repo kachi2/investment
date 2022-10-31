@@ -92,7 +92,7 @@
                     <div class="row g-3">
                         <div class="col-lg-12">
                             <div class="nk-block-content text-center text-lg-center">
-                                <p class="text-soft">{!! 'Copyright &copy; Investorm 2021. All Rights Reserved.' !!}</p>
+                                <p class="text-soft">{!! 'Copyright &copy; Adventcapital. All Rights Reserved.' !!}</p>
                             </div>
                         </div>
                     </div>

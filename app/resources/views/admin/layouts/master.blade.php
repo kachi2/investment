@@ -30,7 +30,7 @@
             <div class="nk-content ">
                 <div class="container-fluid ">
 
-                    @include('misc.message-admin')
+                    {{-- @include('misc.message-admin') --}}
                     @include('misc.notices')
 
                     @yield('content')

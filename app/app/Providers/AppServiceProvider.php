@@ -37,13 +37,12 @@ class AppServiceProvider extends ServiceProvider
         
 
         view()->composer('*', function($view){
-          
-    
             if (Auth::guard('agent')->check()) {
             $activity = AgentActivity::where('agent_id', agent_user()->id)->latest()->first();
             $view->with('agent_activity', $activity);
             $img = Agent::where('id', agent_user()->id)->first();
-            $view->with('user_profile',$img->img);
+            $view->with('user_profile',$img->img, );
+            $view->with('working_hours',$img->working_hours);
             }
             });
         

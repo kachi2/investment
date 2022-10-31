@@ -7,7 +7,7 @@
     <meta name="description" content="@yield('desc')">
     <meta name="keywords" content="@yield('keyword')">
     <title>@yield('title') | {{ site_info('name') }}</title>
-    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
+    <link rel="shortcut icon" href="{{ asset('favicon.png') }}">
     <link rel="stylesheet" href="{{ asset('/assets/css/apps.css?ver=1.0.0') }}">
     <link rel="stylesheet" href="{{ asset('/assets/css/front.css') }}">
     <link rel="stylesheet" href="{{ asset('/assets/slider/carouselTicker.css') }}">

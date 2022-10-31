@@ -31,8 +31,8 @@ define('LARAVEL_START', microtime(true));
 |
 */
 
-if (file_exists(__DIR__.'/core_invapp/storage/framework/maintenance.php')) {
-    require __DIR__.'/core_invapp/storage/framework/maintenance.php';
+if (file_exists(__DIR__.'/app/storage/framework/maintenance.php')) {
+    require __DIR__.'/app/storage/framework/maintenance.php';
 }
 
 /*
@@ -47,7 +47,7 @@ if (file_exists(__DIR__.'/core_invapp/storage/framework/maintenance.php')) {
 |
 */
 
-require __DIR__.'/core_invapp/vendor/autoload.php';
+require __DIR__.'/app/vendor/autoload.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -61,7 +61,7 @@ require __DIR__.'/core_invapp/vendor/autoload.php';
 |
 */
 
-$app = require_once __DIR__.'/core_invapp/bootstrap/app.php';
+$app = require_once __DIR__.'/app/bootstrap/app.php';
 
 /*
 |--------------------------------------------------------------------------

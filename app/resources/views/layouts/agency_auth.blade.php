@@ -39,6 +39,16 @@
 <script src="{{asset('/agency/plugins/jvectormap/jquery-jvectormap-us-aea-en.js')}}"></script>
 <script src="{{asset('/agency/pages/jquery.analytics_dashboard.init.js')}}"></script>
 <script src="{{asset('/agency/js/app.js')}}"></script>
-
+<script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/628d8ee4b0d10b6f3e73e28b/1g3sfcblt';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+        })();
+        </script>
 </body>
 </html>

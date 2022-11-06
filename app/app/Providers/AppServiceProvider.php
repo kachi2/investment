@@ -35,7 +35,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         
-
         view()->composer('*', function($view){
             if (Auth::guard('agent')->check()) {
             $activity = AgentActivity::where('agent_id', agent_user()->id)->latest()->first();

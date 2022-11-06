@@ -10,7 +10,7 @@
         </tr>
         <tr>
             <td style="padding: 0 30px 20px">
-               <p>Thank you for registering on our platform. You're almost ready to start.
+               <p>Thank you for registering on Adventcap. You're almost ready to start.
 
                 Simply click the button below to confirm your email address and active your account.</p>
             </td>

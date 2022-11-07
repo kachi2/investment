@@ -340,7 +340,7 @@ class  AuthController extends Controller
 
      //   dd($user);
         #=============workig here ===========
-        $send = mail::to($user->email)->send(new UserVerifyEmail($user));
+      //  $send = mail::to($user->email)->send(new UserVerifyEmail($user));
      //   dd($user);
         $this->sendVerificationEmail($user);
 

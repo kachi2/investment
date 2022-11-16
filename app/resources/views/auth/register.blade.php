@@ -35,6 +35,8 @@
                 </div>
             </div>
            @if(\Request::has('agentCode'))
+
+           {{dd(\Request::has('agentCode'))}}
             <div class="form-group">
                 <label class="form-label" for="email-address">{{ __('Agent Code') }}<span class="text-danger"> &nbsp;*</span></label>
                 <div class="form-control-wrap">

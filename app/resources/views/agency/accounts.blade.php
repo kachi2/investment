@@ -49,9 +49,9 @@
                                         <li class=""><i class="ti ti-mobile me-2 text-secondary font-16 align-middle"></i> <b> Phone </b> : {{agent_user()->phone}}</li>
                                         <li class="mt-2"><i class="ti ti-email text-secondary font-16 align-middle me-2"></i> <b> Email </b> : {{agent_user()->email}}</li>
                                         <li class="mt-2"><i class="ti ti-world text-secondary font-16 align-middle me-2"></i> <b> Referral Link </b> : 
-                                            <a href="#" class="font-14 text-primary">@php echo base_url().'/'.agent_user()->ref_code @endphp</a> 
+                                            <a href="#" class="font-14 text-primary">@php echo base_url().'register?agentCode='.agent_user()->ref_code @endphp</a> 
                                         </li>                                                   
-                                    </ul>
+                                    </ul> 
                                 </div><!--end col-->
                             </div><!--end row-->
                         </div><!--end f_profile-->                                                                                

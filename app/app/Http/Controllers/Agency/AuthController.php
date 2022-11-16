@@ -129,7 +129,7 @@ class AuthController extends Controller
             'agent_id' => $agent->id,
             'task_type' => 'referral',
             'heading' => 'Welcome Task',
-            'content' => 'Its time to prove you are good for this job, share your referral link on your profile to your friends and get 10 new users in 7 days',
+            'content' => 'Its time to prove you are good for this job, share your referral link on your profile  and get 5 new users in 7 days',
             'expires' => Carbon::now()->addDays(7),
             'bonus' => '$20',
             'completion' => 0

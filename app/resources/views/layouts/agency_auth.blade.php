@@ -8,7 +8,7 @@
         <meta content="" name="author" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <!-- App favicon -->
-        <link rel="shortcut icon" href="{{asset('/favicon.ico')}}">
+        <link rel="shortcut icon" href="{{ asset('favicon.png') }}">
         <!-- jvectormap -->
         <link href="plugins/jvectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet">
         <!-- App css -->

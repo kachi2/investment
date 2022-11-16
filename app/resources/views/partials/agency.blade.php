@@ -20,25 +20,25 @@
                     <li class="menu-label mt-0">Main</li>
                     @if(agent_user()->is_admin == 0)
                     <li>
-                        <a href="{{route('agency.index')}}" style="color:#fff"> <i data-feather="home" class="align-self-center menu-icon"></i><span>Dashboard</span></a>
+                        <a href="{{route('agency.index')}}" style="color:#eee"> <i data-feather="home" class="align-self-center menu-icon"></i><span>Dashboard</span></a>
                         
                     </li>
                     
                     <li>
-                        <a href="{{route('agent.referral')}}" style="color:#fff"><i data-feather="lock" class="align-self-center menu-icon"></i><span>My Referrals</span></a>
+                        <a href="{{route('agent.referral')}}" style="color:#eee"><i data-feather="lock" class="align-self-center menu-icon"></i><span>My Referrals</span></a>
                     </li> 
                     <li>
-                        <a href="{{route('agency.task')}}" style="color:#fff"><i data-feather="lock" class="align-self-center menu-icon"></i><span>My Task</span></a>
+                        <a href="{{route('agency.task')}}" style="color:#eee"><i data-feather="lock" class="align-self-center menu-icon"></i><span>My Task</span></a>
                     </li>
                     @else
                     <li>
-                        <a href="{{route('agency.admin.index')}}" style="color:#fff"><i data-feather="layers" class="align-self-center menu-icon"></i><span>Dashboard</span></a>
+                        <a href="{{route('agency.admin.index')}}" style="color:#eee"><i data-feather="layers" class="align-self-center menu-icon"></i><span>Dashboard</span></a>
                     </li>
                     <li>
-                        <a href="{{route('agency.admin.referals')}}" style="color:#fff"><i data-feather="layers" class="align-self-center menu-icon"></i><span>Agent Referrals</span></a>
+                        <a href="{{route('agency.admin.referals')}}" style="color:#eee"><i data-feather="layers" class="align-self-center menu-icon"></i><span>Agent Referrals</span></a>
                     </li>
                     <li>
-                        <a href="{{route('admin.agent.task')}}" style="color:#fff"><i data-feather="layers" class="align-self-center menu-icon"></i><span>Assign Task</span></a>
+                        <a href="{{route('admin.agent.task')}}" style="color:#eee"><i data-feather="layers" class="align-self-center menu-icon"></i><span>Assign Task</span></a>
                     </li>
                     @endif
     
@@ -46,35 +46,35 @@
                     <li class="menu-label my-2">Income and Bonus</li>
                     @if(agent_user()->is_admin == 0)
                     <li>
-                        <a href="{{route('agency.payment')}}" style="color:#fff"><i data-feather="layers" class="align-self-center menu-icon"></i><span>Payments</span></a>
+                        <a href="{{route('agency.payment')}}" style="color:#eee"><i data-feather="layers" class="align-self-center menu-icon"></i><span>Payments</span></a>
                     </li>     
                     <li>
-                        <a href="{{route('agency.salary')}}" style="color:#fff"><i data-feather="layers" class="align-self-center menu-icon"></i><span>Salary</span></a>
+                        <a href="{{route('agency.salary')}}" style="color:#eee"><i data-feather="layers" class="align-self-center menu-icon"></i><span>Salary</span></a>
                     </li> 
                     @else
                     
                     <li>
-                        <a href="{{route('agency.admin.salaries')}}" style="color:#fff"><i data-feather="layers" class="align-self-center menu-icon"></i><span>Salaries</span></a>
+                        <a href="{{route('agency.admin.salaries')}}" style="color:#eee"><i data-feather="layers" class="align-self-center menu-icon"></i><span>Salaries</span></a>
                     </li>
                     <li>
-                        <a href="{{route('agency.admin.payments')}}" style="color:#fff"><i data-feather="layers" class="align-self-center menu-icon"></i><span>Hourly Payments</span></a>
+                        <a href="{{route('agency.admin.payments')}}" style="color:#eee"><i data-feather="layers" class="align-self-center menu-icon"></i><span>Hourly Payments</span></a>
                     </li>
                     @endif
                     <hr class="hr-dashed hr-menu">
                     <li class="menu-label my-2">Manage Account</li>   
                     @if(agent_user()->is_admin == 0)
                     <li>
-                        <a href="{{route('agency.account')}}" style="color:#fff"><i data-feather="layers" class="align-self-center menu-icon"></i><span> My Account</span></a>
+                        <a href="{{route('agency.account')}}" style="color:#eee"><i data-feather="layers" class="align-self-center menu-icon"></i><span> My Account</span></a>
                     </li>   
                     @else
                     <li>
-                        <a href="{{route('agency.account')}}" style="color:#fff"><i data-feather="layers" class="align-self-center menu-icon"></i><span> My Account</span></a>
+                        <a href="{{route('agency.account')}}" style="color:#eee"><i data-feather="layers" class="align-self-center menu-icon"></i><span> My Account</span></a>
                     </li> 
                     <li>
-                        <a href="{{route('agency.register')}}" style="color:#fff"><i data-feather="layers" class="align-self-center menu-icon"></i><span>Add Agent</span></a>
+                        <a href="{{route('agency.register')}}" style="color:#eee"><i data-feather="layers" class="align-self-center menu-icon"></i><span>Add Agent</span></a>
                     </li>
                     <li>
-                        <a href="{{route('admin.agent.list')}}" style="color:#fff"><i data-feather="layers" class="align-self-center menu-icon"></i><span>Manage Agent</span></a>
+                        <a href="{{route('admin.agent.list')}}" style="color:#eee"><i data-feather="layers" class="align-self-center menu-icon"></i><span>Manage Agent</span></a>
                     </li>
                     @endif   
                     <li>

@@ -7,6 +7,7 @@
     <title>@yield('title', 'Welcome') | {{ site_info('name') }}</title>
     <link rel="shortcut icon" href="{{ asset('favicon.png') }}">
     <link rel="stylesheet" href="{{ asset('/assets/css/apps.css?ver=1.1.0') }}">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 @if (!empty(global_meta_content('seo')))
     {!! global_meta_content('seo') !!}
 @endif

@@ -9,7 +9,7 @@ use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegistrationRequest;
 use App\Http\Requests\ResetPasswordRequest;
 use App\Jobs\ProcessEmail;
-
+use Captcha;
 use App\Models\User;
 use App\Models\Agent;
 use Illuminate\Support\Facades\Mail;
@@ -74,6 +74,9 @@ class  AuthController extends Controller
      */
     public function register(RegistrationRequest $request)
     {
+        $this->validate($request, [
+            'captcha' => 'required|captcha',
+        ]);
         if (has_recaptcha()) {
             RecaptchaService::verify($request);
         }

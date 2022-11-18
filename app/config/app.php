@@ -173,6 +173,8 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        'Mews\Captcha\CaptchaServiceProvider',
+        
 
         /*
          * Package Service Providers...
@@ -245,6 +247,7 @@ return [
         'Agent' => Jenssegers\Agent\Facades\Agent::class,
         'Panel' => App\Helpers\UserPanel::class,
         'NioQR' => App\Helpers\NioQR::class,
+        'Captcha' => 'Mews\Captcha\Facades\Captcha',
 
     ],
 

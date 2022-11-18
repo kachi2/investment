@@ -22,6 +22,7 @@
         </div>
         @include('auth.partials.error')
         <form action="{{ route('auth.register') }}" autocomplete="off" method="POST" id="registerForm" class="form-validate is-alter" autocomplete="off">
+            @csrf
             <div class="form-group">
                 <label class="form-label" for="full-name">{{ __('Full Name') }}<span class="text-danger"> &nbsp;*</span></label>
                 <div class="form-control-wrap">
@@ -35,8 +36,6 @@
                 </div>
             </div>
            @if(\Request::has('agentCode'))
-
-           {{dd(\Request::has('agentCode'))}}
             <div class="form-group">
                 <label class="form-label" for="email-address">{{ __('Agent Code') }}<span class="text-danger"> &nbsp;*</span></label>
                 <div class="form-control-wrap">
@@ -63,17 +62,25 @@
             </div>
             @endif
 
-            @if(has_restriction())
-            <div class="text-danger text-center font-italic small mb-1">
-                {!! 'You are about to register into demo application to see the platform.' !!}
-            </div>
-            @endif
+          
 
-            <div class="form-group">
-                @csrf
-                @if(has_recaptcha())
-                    <input type="hidden" id="recaptcha" value="" name="recaptcha">
-                @endif
+           
+               
+                
+                    {{-- <label class="form-label" for="captcha"  >{{ __('') }}<span class="text-danger"> &nbsp;*</span></label>
+                     --}}
+                    <div class="col-md-12 p-2">
+                        <span class="captcha-image">{!! Captcha::img() !!}</span> &nbsp;&nbsp;
+                        <a href="" class="btn btn-success refresh-button">Refresh</a>
+                        <input id="captcha" type="text" class="form-control form-control-lg @error('captcha') is-invalid @enderror" name="captcha" required>
+                        @error('captcha')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+            
+          
                 @if($user_counts==0)
                 <input type="hidden" name="confirmation" value="on">
                 @endif

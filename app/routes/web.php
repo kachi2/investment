@@ -48,8 +48,8 @@ Route::middleware(['guest'])->group(function(){
 	Route::get('/auth/2fa','AuthController@authVerifyForm')->name('auth.2fa.form');
 	Route::post('/auth/2fa','AuthController@authVerify2FA')->name('auth.2fa');
 
-	Route::get('/user/register', 'AuthController@registerForm')->name('auth.register.form');
-	Route::post('/user/register', 'AuthController@register')->name('auth.register');
+	Route::get('/users/register', 'AuthController@registerForm')->name('auth.register.form');
+	Route::post('/users/register', 'AuthController@register')->name('auth.register');
 
 	Route::get('/password/forget', 'AuthController@forgetPasswordView')->name('auth.forget.form');
 	Route::post('/password/forget', 'AuthController@forgetPassword')->name('auth.forget');

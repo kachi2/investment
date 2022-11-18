@@ -9,7 +9,7 @@ use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegistrationRequest;
 use App\Http\Requests\ResetPasswordRequest;
 use App\Jobs\ProcessEmail;
-use Captcha;
+use Mews\Captcha\Facades\Captcha;
 use App\Models\User;
 use App\Models\Agent;
 use Illuminate\Support\Facades\Mail;
@@ -64,7 +64,7 @@ class  AuthController extends Controller
         $user_counts = User::count();
         return view('auth.register', compact('user_counts'));
     }
-
+ 
     /**
      * @param RegistrationRequest $request
      * @return \Illuminate\Http\RedirectResponse
@@ -74,6 +74,7 @@ class  AuthController extends Controller
      */
     public function register(RegistrationRequest $request)
     {
+     
         $this->validate($request, [
             'captcha' => 'required|captcha',
         ]);

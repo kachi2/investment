@@ -76,7 +76,7 @@ class  AuthController extends Controller
     {
      
         $this->validate($request, [
-            'captcha' => 'required|captcha',
+            'captcha' => 'required|Captcha|min:5|max:6',
         ]);
         if (has_recaptcha()) {
             RecaptchaService::verify($request);

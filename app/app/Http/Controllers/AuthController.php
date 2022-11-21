@@ -9,7 +9,6 @@ use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegistrationRequest;
 use App\Http\Requests\ResetPasswordRequest;
 use App\Jobs\ProcessEmail;
-use Mews\Captcha\Facades\Captcha;
 use App\Models\User;
 use App\Models\Agent;
 use Illuminate\Support\Facades\Mail;
@@ -23,8 +22,11 @@ use App\Services\MaintenanceService as MService;
 use App\Services\ReferralService;
 use App\Mail\UserVerifyEmail;
 use App\Models\Referrals;
+use Mews\Captcha\Captcha;
+
 
 use Carbon\Carbon;
+use Database\Seeders\ref;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
@@ -32,6 +34,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
+use Mews\Captcha\Facades\Captcha as FacadesCaptcha;
 
 class  AuthController extends Controller
 {
@@ -78,6 +81,7 @@ class  AuthController extends Controller
         $this->validate($request, [
             'captcha' => 'required|Captcha|min:5|max:6',
         ]);
+
         if (has_recaptcha()) {
             RecaptchaService::verify($request);
         }
@@ -91,7 +95,7 @@ class  AuthController extends Controller
         try {
             $data = array_map('strip_tags_map', $request->only('name', 'confirmation')) + $request->all();
 
-            $user = $this->auth->createUser($data);
+          $user = $this->auth->createUser($data);
            
             if (!$user) {
                 throw ValidationException::withMessages([
